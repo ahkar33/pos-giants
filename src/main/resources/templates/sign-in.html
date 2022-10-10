@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="" />
+    <title>Sign in</title>
+    <!-- Bootstrap core CSS -->
+    <link href="/assets/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+    <!-- Custom styles for this template -->
+    <link href="/assets/css/sign-in.css" rel="stylesheet" />
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <!-- icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" />
+</head>
+
+<body class="text-center body-img">
+    <main class="form-signin p-0">
+        <div class="card mb-2 me-2 ms-2">
+            <div class="card-body p-0">
+
+                <div class="row">
+                    <div class="col-lg-6">
+                        <div class="pb-5 pe-4 ps-4 pt-5">
+                            <p class="welcome mb-3">WELCOME TO</p>
+                            <img src="/assets/img/logo.jpg" width="230" class="mb-4 me-3 mt-2" />
+                            <div class="text-start">
+                                <p class="text-center login-label mb-1">Log in to continue to your account.</p>
+                            </div>
+                            <form class="pe-4 ps-4 user">
+                                <div class="mb-2">
+                                    <input
+                                        class="border border-1 border-secondary form-control mb-0 ps-3 rounded rounded-pill shadow-sm"
+                                        type="text"
+                                        placeholder="Enter Name..." name="name" required="" />
+                                </div>
+                                <div class="mb-2">
+                                    <input
+                                        class="border border-1 border-secondary form-control form-control-user ps-3 rounded rounded-pill shadow-sm"
+                                        type="password" placeholder="Enter Password...."
+                                        name="password" required="" />
+                                </div>
+                                <div class="mb-2">
+                                    <div class="custom-control custom-checkbox small">
+                                        <div class="ms-3 d-flex form-check">
+                                            <input class="me-2 border border-dark form-check-input" type="checkbox"
+                                                id="formCheck-1"/>
+                                            <label class="login-label text-dark form-check-label" for="formCheck-1">
+                                                Remember Me
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <a class="border button btn d-block mb-3 rounded rounded-pill shadow-sm w-100"
+                                    role="button" data-bss-hover-animate="pulse"
+                                    href="student/student-home-page.html">
+                                    Login </a>
+                            </form>
+                            <div>
+                                <p>Already have an account? <span><a href="#" class="register-here">Register
+                                            Here.</a></span></p>
+                                <p class="mb-2 mt-3 text-secondary smallf">OR
+                                </p>
+                                <p class="text-secondary">Continue with
+                                    social media</p>
+                            </div>
+                            <a href=""><i class="fa-brands fa-facebook-f me-4 text-primary social-icons"></i></a>
+                            <a href=""><i class="fa-brands fa-google me-4 text-danger social-icons"></i></a>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 d-lg-flex d-none ps-0">
+                        <div class="flex-grow-1 bg-login-image photo-for-login"
+                            style="background: url(&quot;assets/img/login-photo.png&quot;) center / contain no-repeat;">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <script src="/assets/js/popper.min.js"></script>
+    <script src="/assets/bootstrap/js/bootstrap.min.js"></script>
+</body>
+
+</html>
