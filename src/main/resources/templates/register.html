@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="" />
+  <title>Register</title>
+  <!-- Bootstrap core CSS -->
+  <link href="/assets/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+  <!-- Custom styles for this template -->
+  <link href="/assets/css/sign-in-&-register.css" rel="stylesheet" />
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <!-- icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" />
+</head>
+
+<body class="text-center body-img">
+<main class="form-signin p-0">
+  <div class="card mb-2 me-2 ms-2">
+    <div class="card-body p-0">
+      <div class="row">
+        <div class="col-lg-6 d-lg-flex d-none ps-3">
+          <div class="flex-grow-1 bg-login-image photo-for-login"
+               style="background: url(/assets/img/login-photo.png) center / contain no-repeat;">
+          </div>
+        </div>
+        <div class="col-lg-6">
+          <div class="pb-5 pe-4 ps-4 pt-5">
+            <img src="/assets/img/logo.jpg" width="230" class="mb-4 me-3 mt-2" />
+            <div>
+              <p class="login-label mb-2 text-secondary">Already have an account? <span><a href="#" class="register-here">Log in</a></span></p>
+            </div>
+            <form class="pe-4 ps-4 user">
+              <div class="mb-2">
+                <input
+                        class="border border-1 border-secondary form-control mb-0 ps-3 rounded rounded-pill shadow-sm"
+                        type="text"
+                        placeholder="Enter Name..." name="name" required="" />
+              </div>
+              <div class="mb-2">
+                <input
+                        class="border border-1 border-secondary form-control mb-0 ps-3 rounded rounded-pill shadow-sm"
+                        type="text"
+                        placeholder="Enter Email..." name="email" required="" />
+              </div>
+              <div class="mb-2">
+                <input
+                        class="border border-1 border-secondary form-control form-control-user ps-3 rounded rounded-pill shadow-sm"
+                        type="password" placeholder="Enter Password...."
+                        name="password" required="" />
+              </div>
+              <div class="mb-3">
+                  <input
+                          class="border border-1 border-secondary form-control form-control-user ps-3 rounded rounded-pill shadow-sm"
+                          type="text" placeholder="Confirm Password...."
+                          name="confirm-password" required="" />
+              </div>
+              <a class="border button btn d-block mb-3 rounded rounded-pill shadow-sm w-100"
+                 role="button" data-bss-hover-animate="pulse"
+                 href="student/student-home-page.html">
+                Register</a>
+            </form>
+            <div>
+              <p class="mb-2 mt-3 text-secondary smallf">OR
+              </p>
+              <p class="text-secondary">Register with</p>
+            </div>
+            <a href=""><i class="fa-brands fa-facebook-f me-4 text-primary social-icons"></i></a>
+            <a href=""><i class="fa-brands fa-google me-4 text-danger social-icons"></i></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+<script src="/assets/js/popper.min.js"></script>
+<script src="/assets/bootstrap/js/bootstrap.min.js"></script>
+</body>
+
+</html>
