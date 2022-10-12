@@ -7,9 +7,9 @@
   <meta name="description" content="" />
   <title>Sign in</title>
   <!-- Bootstrap core CSS -->
-  <link rel="stylesheet" type="text/css" th:href="@{/resources/assets/bootstrap/css/bootstrap.min.css}" />
+  <link rel="stylesheet" type="text/css" href="/assets/bootstrap/css/bootstrap.min.css" />
   <!-- Custom styles for this template -->
-  <link rel="stylesheet" type="text/css" th:href="@{/resources/assets/css/sign-in-&-register.css}" />
+  <link rel="stylesheet" type="text/css" href="/assets/css/sign-in-&-register.css" />
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -25,7 +25,7 @@
           <div class="col-lg-6">
             <div class="pb-5 pe-4 ps-4 pt-5">
               <p class="welcome mb-3">WELCOME TO</p>
-              <img th:src="@{/resources/assets/img/logo.jpg}" width="230" class="mb-4 me-3 mt-2" />
+              <img src="/assets/img/logo.jpg" width="230" class="mb-4 me-3 mt-2" />
               <div class="text-start">
                 <p class="text-center login-label mb-1">
                   Log in to continue to your account.
@@ -81,7 +81,7 @@
           </div>
           <div class="col-lg-6 d-lg-flex d-none ps-0">
             <div class="flex-grow-1 bg-login-image photo-for-login" style="
-                  background: url(@{/resources/assets/img/login-photo.png}) center / contain
+                  background: url(/assets/img/login-photo.png) center / contain
                     no-repeat;
                 "></div>
           </div>
@@ -89,8 +89,8 @@
       </div>
     </div>
   </main>
-  <script type="text/javascript" th:src="@{/resources/assets/js/popper.min.js}"></script>
-  <script type="text/javascript" th:src="@{/resources/assets/bootstrap/js/bootstrap.min.js}"></script>
+  <script type="text/javascript" src="/assets/js/popper.min.js"></script>
+  <script type="text/javascript" src="assets/bootstrap/js/bootstrap.min.js"></script>
 </body>
 
 </html>

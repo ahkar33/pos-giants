@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" th:href="@{/resources/assets/bootstrap/css/bootstrap.min.css}">
+    <link rel="stylesheet" href="/assets/bootstrap/css/bootstrap.min.css">
 </head>
 
 <body>
@@ -23,24 +23,29 @@
                             <th>Updated By</th>
                             <th>Created At</th>
                             <th>Updated at</th>
+                            <th>Controls</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr th:each="c,row : ${categories}">
+                        <tr th:each="c,row : ${categories}" style="vertical-align: middle;">
                             <td>[[${row.index}+1]]</td>
                             <td>[[${c.code}]]</td>
                             <td>[[${c.name}]]</td>
                             <td>[[${c.created_by}]]</td>
                             <td>[[${c.updated_by}]]</td>
-                            <td>[[${}]]</td>
-                            <td>[[${c.updated_at}]]</td>
+                            <td>[[${#temporals.format(c.created_at, 'yyyy-MM-dd hh:mm a')}]]</td>
+                            <td>[[${#temporals.format(c.updated_at, 'yyyy-MM-dd hh:mm a')}]]</td>
+                            <td class="d-flex">
+                                <a href="" class="btn btn-primary me-2">Edit</a>
+                                <a th:href="@{/admin/category/delete/}+${c.id}" class="btn btn-danger">Delete</a>
+                            </td>
                         </tr>
                     </tbody>
                 </table>
             </div>
         </form>
     </div>
-    <script th:src="@{/resources/assets/bootstrap/js/bootstrap.min.js}"></script>
+    <script src="/assets/bootstrap/js/bootstrap.min.js"></script>
 </body>
 
 </html>

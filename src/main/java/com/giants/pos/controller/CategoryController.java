@@ -8,6 +8,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -57,6 +58,12 @@ public class CategoryController {
     public String index(ModelMap m){
         m.put("categories", categoryRepository.findAllByOrderByIdDesc());
         return "category/index";
+    }
+
+    @GetMapping("delete/{id}")
+    public String destroy(@PathVariable int id){
+        categoryRepository.deleteById(id);
+        return "redirect:/admin/category/list";
     }
     
 }
