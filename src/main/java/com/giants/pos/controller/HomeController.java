@@ -1,11 +1,10 @@
 package com.giants.pos.controller;
 
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping; 
+import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
 public class HomeController {
-
 
     @GetMapping("/")
     public String sayHi() {
@@ -13,9 +12,10 @@ public class HomeController {
     }
 
     @GetMapping("/dashboard")
-    public String goToDashboard(){
+    public String goToDashboard() {
         return "dashboard";
     }
+
     @GetMapping("/logout")
     public String logOut() {
         return "sign-in";
@@ -25,6 +25,5 @@ public class HomeController {
     public String register() {
         return "/register";
     }
-
 
 }
