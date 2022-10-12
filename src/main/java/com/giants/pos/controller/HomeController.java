@@ -6,9 +6,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class HomeController {
 
-
     @GetMapping("/")
-    public String sayHi() {
+    public String signIn() {
         return "sign-in";
     }
 
@@ -22,9 +21,8 @@ public class HomeController {
     }
 
     @GetMapping("/register")
-    public String register() {
+    public String setupRegister() {
         return "/register";
     }
-
 
 }
