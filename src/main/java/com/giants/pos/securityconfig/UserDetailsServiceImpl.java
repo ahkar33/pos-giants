@@ -5,18 +5,18 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 
-import com.giants.pos.datamodel.Users;
-import com.giants.pos.repository.UsersRepository;
+import com.giants.pos.datamodel.User;
+import com.giants.pos.repository.UserRepository;
 
 public class UserDetailsServiceImpl implements UserDetailsService {
  
     @Autowired
-     UsersRepository userRepository;
+     UserRepository userRepository;
      
     @Override
     public UserDetails loadUserByUsername(String userEmail)
             throws UsernameNotFoundException {
-        Users user = userRepository.findByEmail(userEmail);
+        User user = userRepository.findByEmail(userEmail);
          
         if (user == null) {
             throw new UsernameNotFoundException("Could not find user");

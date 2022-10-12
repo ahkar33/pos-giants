@@ -10,12 +10,12 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import com.giants.pos.datamodel.Role;
-import com.giants.pos.datamodel.Users;
+import com.giants.pos.datamodel.User;
 
 public class MyUserDetails implements UserDetails{
-    private Users user;
+    private User user;
 
-     public  MyUserDetails(Users user){
+     public  MyUserDetails(User user){
         this.user=user;
      }
     @Override
