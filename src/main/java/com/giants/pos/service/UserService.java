@@ -26,13 +26,17 @@ public class UserService {
     public void addUser(UserDto userDto) {
         User user = new User();
         user.setName(userDto.getName());
-        user.setEmail(userDto.getName());
+        user.setEmail(userDto.getEmail());
         user.setCreatedDate(LocalDateTime.now());
         user.setPassword(passwordEncoder.encode(userDto.getPassword()));
         user.getRoles().add(roleRepository.findByName("SALEPERSON"));
         user.setEnabled(true);
         user.setFailPasswordAttempt(0);
         userRepository.save(user);
+    }
+
+    public boolean isEmailExist(String email) {
+        return userRepository.existsByEmail(email);
     }
 
 }

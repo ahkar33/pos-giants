@@ -7,5 +7,9 @@ import com.giants.pos.datamodel.User;
 
 @Repository
 public interface UserRepository extends JpaRepository<User,Long>{
-   public User findByEmail(String email);
+
+   User findByEmail(String email);
+
+   boolean existsByEmail(String email);
+
 }

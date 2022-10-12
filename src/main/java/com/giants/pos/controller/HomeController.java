@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import com.giants.pos.dtomodel.UserDto;
-import com.giants.pos.service.UserService; 
+import com.giants.pos.service.UserService;
 
 @Controller
 public class HomeController {
@@ -22,9 +22,10 @@ public class HomeController {
     }
 
     @GetMapping("/dashboard")
-    public String goToDashboard(){
+    public String goToDashboard() {
         return "dashboard";
     }
+
     @GetMapping("/logout")
     public String logOut() {
         return "sign-in";
@@ -38,9 +39,13 @@ public class HomeController {
 
     @PostMapping("/register")
     public String register(@ModelAttribute("userData") UserDto userDto, ModelMap model) {
-        if(!userDto.getPassword().equals(userDto.getConfirmPassword())){
+        if (!userDto.getPassword().equals(userDto.getConfirmPassword())) {
             model.addAttribute("userData", userDto);
             model.addAttribute("error", "Passwords do not match!");
+            return "/register";
+        }
+        if (userService.isEmailExist(userDto.getEmail())) {
+            model.addAttribute("error", "Email already exists");
             return "/register";
         }
         userService.addUser(userDto);
