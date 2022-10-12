@@ -1,28 +1,27 @@
 package com.giants.pos.controller;
 
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.GetMapping; 
 
 @Controller
 public class HomeController {
 
     @GetMapping("/")
-    public String sayHi() {
+    public String signIn() {
         return "sign-in";
     }
 
     @GetMapping("/dashboard")
-    public String goToDashboard() {
+    public String goToDashboard(){
         return "dashboard";
     }
-
     @GetMapping("/logout")
     public String logOut() {
         return "sign-in";
     }
 
     @GetMapping("/register")
-    public String register() {
+    public String setupRegister() {
         return "/register";
     }
 
