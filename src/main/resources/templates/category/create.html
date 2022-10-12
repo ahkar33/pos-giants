@@ -10,7 +10,19 @@
 </head>
 
 <body>
-    <h1>hello</h1>
+    <div class="container py-5">
+        <form th:action="@{/admin/category/create}" method="post">
+            <div class="row">
+                <div class="col">
+                    <input type="text" class="form-control" name="name" placeholder="Enter Category Name">
+                    <input type="hidden" name="user_id" value="">
+                </div>
+                <div class="col">
+                    <button class="btn btn-primary" type="submit">Create Category</button>
+                </div>
+            </div>
+        </form>
+    </div>
     <script th:src="@{/resources/assets/bootstrap/js/bootstrap.min.js}"></script>
 </body>
 

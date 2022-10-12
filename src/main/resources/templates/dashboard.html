@@ -1,228 +1,185 @@
-<!DOCTYPE html>
+<!DOCTYPE html xmlns:th="http://www.thymeleaf.org">
 <html lang="en" class="">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Amaretti</title>
-    <link
-      rel="stylesheet"
-      type="text/css"
-      href="assets/lib/perfect-scrollbar/css/perfect-scrollbar.css"
-    />
-    <link type="text/css" href="assets/css/app.css" rel="stylesheet" />
-    <link
-      href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
-      rel="stylesheet"
-    />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
-      integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A=="
-      crossorigin="anonymous"
-      referrerpolicy="no-referrer"
-    />
-  </head>
 
-  <body>
-    <div class="am-wrapper">
-      <nav class="navbar navbar-expand-md fixed-top am-top-header">
-        <div class="container-fluid">
-          <!-- Page Title For Mobile View -->
-          <div class="am-navbar-header">
-            <div class="page-title"><span>Dashboard</span></div>
-            <a class="am-toggle-left-sidebar navbar-toggle collapsed" href="#">
-              <span class="icon-bar">
-                <span></span>
-                <span></span>
-                <span></span>
-              </span>
-            </a>
-            <a class="navbar-brand" href=""></a>
-          </div>
-          <button
-            class="navbar-toggler hidden-md-up collapsed"
-            data-toggle="collapse"
-            data-target="#am-navbar-collapse"
-          >
-            <i class="bx bx-chevron-down"></i>
-          </button>
-          <div class="collapse navbar-collapse" id="am-navbar-collapse">
-            <!-- User Profile Drop Down Button -->
-            <ul class="nav navbar-nav am-user-nav">
-              <li class="dropdown">
-                <a
-                  class="dropdown-toggle"
-                  href="#"
-                  data-toggle="dropdown"
-                  role="button"
-                  aria-expanded="false"
-                >
-                  <img src="assets/img/avatar.jpg" />
-                  <span class="user-name">Sitt Thiha Naing</span>
-                  <i class="angle-down bx bx-chevron-down"></i>
-                </a>
-                <ul class="dropdown-menu" role="menu">
-                  <li>
-                    <a href="#">
-                      <i class="icon bx bx-user-circle"></i>
-                      My profile
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#">
-                      <i class="icon bx bx-cog"></i>
-                      Settings
-                    </a>
-                  </li>
-                  <li>
-                    <a th:href="@{/logout}">
-                      <i class="icon bx bx-log-out"></i>
-                      Sign Out
-                    </a>
-                  </li>
-                </ul>
-              </li>
-            </ul>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Amaretti</title>
+  <link rel="stylesheet" type="text/css" href="assets/lib/perfect-scrollbar/css/perfect-scrollbar.css" />
+  <link type="text/css" th:href="@{/resources/css/app.css}" rel="stylesheet" />
+  <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
+    integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
 
-            <!-- Left Nav Button -->
-            <ul class="nav navbar-nav am-top-menu">
-              <li class=""><a href="#">Home</a></li>
-              <li><a href="#">About</a></li>
-              <li class="dropdown">
-                <a
-                  class="dropdown-toggle"
-                  href="#"
-                  data-toggle="dropdown"
-                  role="button"
-                  aria-expanded="false"
-                >
-                  Category
-                  <i class="angle-down bx bx-chevron-down"></i>
-                </a>
-                <ul class="dropdown-menu" role="menu">
-                  <li><a href="#">Electronic</a></li>
-                  <li><a href="#">Fashion</a></li>
-                </ul>
-              </li>
-            </ul>
-
-            <!-- Right Nav buttons -->
-            <ul class="nav navbar-nav am-icons-nav">
-              <li class="dropdown">
-                <a
-                  class="dropdown-toggle"
-                  href="#"
-                  data-toggle="dropdown"
-                  role="button"
-                  aria-expanded="false"
-                >
-                  <i class="bx bx-bell icon bx-tada-hover"></i>
-                  <span class="indicator"></span>
-                </a>
-                <ul class="dropdown-menu am-notifications">
-                  <li>
-                    <div class="title">
-                      Notifications
-                      <span class="badge">3</span>
-                    </div>
-                    <div class="list">
-                      <div class="am-scroller-notifications">
-                        <div class="content">
-                          <ul>
-                            <li class="active">
-                              <a href="#">
-                                <div class="logo">
-                                  <span class="icon s7-pin"></span>
-                                </div>
-                                <div class="user-content">
-                                  <span class="circle"></span>
-                                  <span class="name">Monica</span>
-                                  <span class="text-content">
-                                    Hi, How are you?
-                                  </span>
-                                  <span class="date">2 mins ago</span>
-                                </div>
-                              </a>
-                            </li>
-                          </ul>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="footer">
-                      <a href="#">View all notifications</a>
-                    </div>
-                  </li>
-                </ul>
-              </li>
-            </ul>
-          </div>
+<body>
+  <div class="am-wrapper">
+    <nav class="navbar navbar-expand-md fixed-top am-top-header">
+      <div class="container-fluid">
+        <!-- Page Title For Mobile View -->
+        <div class="am-navbar-header">
+          <div class="page-title"><span>Dashboard</span></div>
+          <a class="am-toggle-left-sidebar navbar-toggle collapsed" href="#">
+            <span class="icon-bar">
+              <span></span>
+              <span></span>
+              <span></span>
+            </span>
+          </a>
+          <a class="navbar-brand" href=""></a>
         </div>
-      </nav>
-
-      <!-- Left Sidebar -->
-      <div class="am-left-sidebar">
-        <div class="content">
-          <div class="am-logo"></div>
-          <ul class="sidebar-elements">
-            <li class="parent">
-              <a href="#">
-                <i class="bx bx-desktop icon"></i>
-                <span>Dashboard</span>
+        <button class="navbar-toggler hidden-md-up collapsed" data-toggle="collapse" data-target="#am-navbar-collapse">
+          <i class="bx bx-chevron-down"></i>
+        </button>
+        <div class="collapse navbar-collapse" id="am-navbar-collapse">
+          <!-- User Profile Drop Down Button -->
+          <ul class="nav navbar-nav am-user-nav">
+            <li class="dropdown">
+              <a class="dropdown-toggle" href="#" data-toggle="dropdown" role="button" aria-expanded="false">
+                <img src="assets/img/avatar.jpg" />
+                <span class="user-name">Sitt Thiha Naing</span>
+                <i class="angle-down bx bx-chevron-down"></i>
               </a>
-              <ul class="sub-menu">
-                <li class="active"><a href="">Version 1</a></li>
+              <ul class="dropdown-menu" role="menu">
                 <li>
-                  <a href="">
-                    <span class="badge badge-primary">New</span>
-                    Version 2
+                  <a href="#">
+                    <i class="icon bx bx-user-circle"></i>
+                    My profile
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    <i class="icon bx bx-cog"></i>
+                    Settings
+                  </a>
+                </li>
+                <li>
+                  <a th:href="@{/logout}">
+                    <i class="icon bx bx-log-out"></i>
+                    Sign Out
                   </a>
                 </li>
               </ul>
             </li>
-            <li class="parent">
-              <a href="#">
-                <i class="bx bxs-category-alt icon"></i>
-                <span>Category</span>
+          </ul>
+
+          <!-- Left Nav Button -->
+          <ul class="nav navbar-nav am-top-menu">
+            <li class=""><a href="#">Home</a></li>
+            <li><a href="#">About</a></li>
+            <li class="dropdown">
+              <a class="dropdown-toggle" href="#" data-toggle="dropdown" role="button" aria-expanded="false">
+                Category
+                <i class="angle-down bx bx-chevron-down"></i>
               </a>
-              <ul class="sub-menu">
-                <li><a href="">Electronic</a></li>
-                <li><a href="">Fashion</a></li>
+              <ul class="dropdown-menu" role="menu">
+                <li><a href="#">Electronic</a></li>
+                <li><a href="#">Fashion</a></li>
+              </ul>
+            </li>
+          </ul>
+
+          <!-- Right Nav buttons -->
+          <ul class="nav navbar-nav am-icons-nav">
+            <li class="dropdown">
+              <a class="dropdown-toggle" href="#" data-toggle="dropdown" role="button" aria-expanded="false">
+                <i class="bx bx-bell icon bx-tada-hover"></i>
+                <span class="indicator"></span>
+              </a>
+              <ul class="dropdown-menu am-notifications">
+                <li>
+                  <div class="title">
+                    Notifications
+                    <span class="badge">3</span>
+                  </div>
+                  <div class="list">
+                    <div class="am-scroller-notifications">
+                      <div class="content">
+                        <ul>
+                          <li class="active">
+                            <a href="#">
+                              <div class="logo">
+                                <span class="icon s7-pin"></span>
+                              </div>
+                              <div class="user-content">
+                                <span class="circle"></span>
+                                <span class="name">Monica</span>
+                                <span class="text-content">
+                                  Hi, How are you?
+                                </span>
+                                <span class="date">2 mins ago</span>
+                              </div>
+                            </a>
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="footer">
+                    <a href="#">View all notifications</a>
+                  </div>
+                </li>
               </ul>
             </li>
           </ul>
         </div>
       </div>
+    </nav>
+
+    <!-- Left Sidebar -->
+    <div class="am-left-sidebar">
+      <div class="content">
+        <div class="am-logo"></div>
+        <ul class="sidebar-elements">
+          <li class="parent">
+            <a href="#">
+              <i class="bx bx-desktop icon"></i>
+              <span>Dashboard</span>
+            </a>
+            <ul class="sub-menu">
+              <li class="active"><a href="">Version 1</a></li>
+              <li>
+                <a href="">
+                  <span class="badge badge-primary">New</span>
+                  Version 2
+                </a>
+              </li>
+            </ul>
+          </li>
+          <li class="parent">
+            <a href="#">
+              <i class="bx bxs-category-alt icon"></i>
+              <span>Category</span>
+            </a>
+            <ul class="sub-menu">
+              <li><a href="">Electronic</a></li>
+              <li><a href="">Fashion</a></li>
+            </ul>
+          </li>
+        </ul>
+      </div>
     </div>
+  </div>
 
-    <script
-      src="assets/lib/jquery/jquery.min.js"
-      type="text/javascript"
-    ></script>
-    <script
-      src="assets/lib/perfect-scrollbar/js/perfect-scrollbar.min.js"
-      type="text/javascript"
-    ></script>
-    <script
-      src="assets/lib/bootstrap/dist/js/bootstrap.bundle.min.js"
-      type="text/javascript"
-    ></script>
-    <script src="assets/js/app.js" type="text/javascript"></script>
-    <script
-      src="assets/lib/jquery-ui/jquery-ui.min.js"
-      type="text/javascript"
-    ></script>
+  <script src="assets/lib/jquery/jquery.min.js" type="text/javascript"></script>
+  <script src="assets/lib/perfect-scrollbar/js/perfect-scrollbar.min.js" type="text/javascript"></script>
+  <script src="assets/lib/bootstrap/dist/js/bootstrap.bundle.min.js" type="text/javascript"></script>
+  <script src="assets/js/app.js" type="text/javascript"></script>
+  <script src="assets/lib/jquery-ui/jquery-ui.min.js" type="text/javascript"></script>
 
-    <script type="text/javascript">
-      $(document).ready(function () {
-        //- initialize the javascript
-        App.init()
-        App.dashboard()
-      })
-    </script>
-    <script type="text/javascript">
-      $(document).ready(function () {
-        App.livePreview()
-      })
-    </script>
-  </body>
+  <script type="text/javascript">
+    $(document).ready(function () {
+      //- initialize the javascript
+      App.init()
+      App.dashboard()
+    })
+  </script>
+  <script type="text/javascript">
+    $(document).ready(function () {
+      App.livePreview()
+    })
+  </script>
+</body>
+
 </html>
