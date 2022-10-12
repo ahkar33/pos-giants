@@ -32,8 +32,8 @@ public class Category {
     private LocalDateTime created_at;
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDateTime updated_at;
-    @ManyToOne
-    private User created_by;
-    @ManyToOne
-    private User updated_by;
+    @Column(nullable = false)
+    private String created_by;
+    @Column(nullable = false)
+    private String updated_by;
 }

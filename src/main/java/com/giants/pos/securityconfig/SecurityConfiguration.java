@@ -9,7 +9,7 @@ public class SecurityConfiguration {
 
     @Bean
     public WebSecurityCustomizer webSecurityCustomizer() {
-        return (web) -> web.ignoring().antMatchers("/assets/**", "/register");
+        return (web) -> web.ignoring().antMatchers("/assets/**", "/register", "/resources/**");
     }
 
 }

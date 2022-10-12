@@ -6,12 +6,24 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" th:href="@{/resources/assets/bootstrap/css/bootstrap.min.css}">
+    <link rel="stylesheet" href="/assets/bootstrap/css/bootstrap.min.css">
 </head>
 
 <body>
-    <h1>hello</h1>
-    <script th:src="@{/resources/assets/bootstrap/js/bootstrap.min.js}"></script>
+    <div class="container py-5">
+        <form th:action="@{/admin/category/create}" method="post">
+            <div class="row">
+                <div class="col">
+                    <input type="text" class="form-control" name="name" placeholder="Enter Category Name">
+                    <input type="hidden" name="user_id" value="">
+                </div>
+                <div class="col">
+                    <button class="btn btn-primary" type="submit">Create Category</button>
+                </div>
+            </div>
+        </form>
+    </div>
+    <script src="/assets/bootstrap/js/bootstrap.min.js"></script>
 </body>
 
 </html>

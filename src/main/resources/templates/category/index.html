@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/assets/bootstrap/css/bootstrap.min.css">
+</head>
+
+<body>
+    <div class="container py-5">
+        <form th:action="@{/admin/category/create}" method="post">
+            <div class="row">
+                <table class="table table-hovered table-striped">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Code</th>
+                            <th>Name</th>
+                            <th>Created By</th>
+                            <th>Updated By</th>
+                            <th>Created At</th>
+                            <th>Updated at</th>
+                            <th>Controls</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr th:each="c,row : ${categories}" style="vertical-align: middle;">
+                            <td>[[${row.index}+1]]</td>
+                            <td>[[${c.code}]]</td>
+                            <td>[[${c.name}]]</td>
+                            <td>[[${c.created_by}]]</td>
+                            <td>[[${c.updated_by}]]</td>
+                            <td>[[${#temporals.format(c.created_at, 'yyyy-MM-dd hh:mm a')}]]</td>
+                            <td>[[${#temporals.format(c.updated_at, 'yyyy-MM-dd hh:mm a')}]]</td>
+                            <td class="d-flex">
+                                <a href="" class="btn btn-primary me-2">Edit</a>
+                                <a th:href="@{/admin/category/delete/}+${c.id}" class="btn btn-danger">Delete</a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </form>
+    </div>
+    <script src="/assets/bootstrap/js/bootstrap.min.js"></script>
+</body>
+
+</html>
