@@ -1,7 +1,6 @@
 package com.giants.pos;
 
 import java.time.LocalDateTime;
-import java.util.Set;
 
 import javax.transaction.Transactional;
 
@@ -29,13 +28,16 @@ public class AppUserInitializer {
     @Transactional
     @EventListener(classes = ContextRefreshedEvent.class)
     public void initializeUser() {
-        if(roleRepo.count() == 0){
-            var role = new Role();
-            role.setName("ADMIN");
-            roleRepo.save(role);
+        if (roleRepo.count() == 0) {
+            var admin = new Role();
+            admin.setName("ADMIN");
+            roleRepo.save(admin);
+            var salePerson = new Role();
+            salePerson.setName("SALEPERSON");
+            roleRepo.save(salePerson);
         }
 
-        if(userRepo.count() == 0) {
+        if (userRepo.count() == 0) {
             var admin = new User();
             admin.setCreatedDate(LocalDateTime.now());
             admin.setEmail("admin@gmail.com");
@@ -43,9 +45,9 @@ public class AppUserInitializer {
             admin.setFailPasswordAttempt(0);
             admin.setName("Admin");
             admin.setPassword(passwordEncoder.encode("admin"));
-            admin.setRoles(Set.of(roleRepo.findById(1).get()));
+            admin.getRoles().add(roleRepo.findByName("ADMIN"));
             userRepo.save(admin);
         }
-        
+
     }
 }
