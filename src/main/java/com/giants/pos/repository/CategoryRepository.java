@@ -11,5 +11,7 @@ import com.giants.pos.datamodel.Category;
 public interface CategoryRepository extends JpaRepository<Category, Integer> {
 
     List<Category> findAllByOrderByIdDesc();
+
+    Category findByName(String name);
     
 }

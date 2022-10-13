@@ -7,13 +7,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="/assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/assets/css/datatable.min.css">
 </head>
 
 <body>
     <div class="container py-5">
         <form th:action="@{/admin/category/create}" method="post">
             <div class="row">
-                <table class="table table-hovered table-striped">
+                <div class="d-flex justify-content-between align-items-center mb-3">
+                    <h4>Category List</h4>
+                    <a th:href="@{/admin/category/create}" class="btn btn-primary">Create Category</a>
+                </div>
+                <table class="table table-hovered table-striped" id="categoryTable">
                     <thead>
                         <tr>
                             <th>#</th>
@@ -36,7 +41,7 @@
                             <td>[[${#temporals.format(c.created_at, 'yyyy-MM-dd hh:mm a')}]]</td>
                             <td>[[${#temporals.format(c.updated_at, 'yyyy-MM-dd hh:mm a')}]]</td>
                             <td class="d-flex">
-                                <a href="" class="btn btn-primary me-2">Edit</a>
+                                <a th:href="@{/admin/category/edit/}+${c.id}" class="btn btn-primary me-2">Edit</a>
                                 <a th:href="@{/admin/category/delete/}+${c.id}" class="btn btn-danger">Delete</a>
                             </td>
                         </tr>
@@ -46,6 +51,13 @@
         </form>
     </div>
     <script src="/assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="/assets/js/jquery.min.js"></script>
+    <script src="/assets/js/datatable.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('#categoryTable').DataTable();
+        });
+    </script>
 </body>
 
 </html>

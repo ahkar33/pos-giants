@@ -35,23 +35,41 @@ public class CategoryController {
     }
 
     @PostMapping("create")
-    public String store(String name, ModelMap m){
+    public String store(String name, ModelMap m, Integer id){
         if(name.isBlank()){
             m.put("name", "Category name is required!");
             return "category/create";
         }
+
+        var c = categoryRepository.findByName(name);
+        if(c != null){
+            m.put("old", name);
+            m.put("name", "Category name has already existed!");
+            return "category/create";
+        }
+
         var email = SecurityContextHolder.getContext().getAuthentication().getName();
         var user = userRepository.findByEmail(email);
-        var category = new Category();
+
+        if(id == null){
+            var category = new Category();
+            category.setName(name);
+            category.setCreated_at(LocalDateTime.now());
+            category.setUpdated_at(LocalDateTime.now());
+            category.setUpdated_by(user.getName());
+            category.setCreated_by(user.getName());
+            category.setCode("cat".concat(df.format(count)));
+            categoryRepository.save(category);
+            count = count+1;
+            return "redirect:/admin/category/create";
+        }
+
+        var category = categoryRepository.findById(id).get();
         category.setName(name);
-        category.setCreated_at(LocalDateTime.now());
         category.setUpdated_at(LocalDateTime.now());
         category.setUpdated_by(user.getName());
-        category.setCreated_by(user.getName());
-        category.setCode("cat".concat(df.format(count)));
         categoryRepository.save(category);
-        count = count+1;
-        return "redirect:/admin/category/create";
+        return "redirect:/admin/category/list";
     }
 
     @GetMapping("list")
@@ -64,6 +82,13 @@ public class CategoryController {
     public String destroy(@PathVariable int id){
         categoryRepository.deleteById(id);
         return "redirect:/admin/category/list";
+    }
+
+    @GetMapping("edit/{id}")
+    public String edit(@PathVariable int id, ModelMap m){
+        var category = categoryRepository.findById(id).get();
+        m.put("category", category);
+        return "category/create";
     }
     
 }
