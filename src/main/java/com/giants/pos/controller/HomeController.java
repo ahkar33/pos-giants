@@ -3,9 +3,12 @@ package com.giants.pos.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.giants.pos.dtomodel.UserDto;
 import com.giants.pos.service.UserService;
@@ -21,7 +24,7 @@ public class HomeController {
         return "sign-in";
     }
 
-    @GetMapping("/dashboard")
+    @GetMapping("/admin/dashboard")
     public String goToDashboard() {
         return "dashboard";
     }
@@ -32,24 +35,29 @@ public class HomeController {
     }
 
     @GetMapping("/register")
-    public String setupRegister(ModelMap model) {
-        model.addAttribute("userData", new UserDto());
-        return "/register";
+    public ModelAndView setupRegister(ModelMap model) {
+        return new ModelAndView("register", "userData", new UserDto());
     }
 
-    @PostMapping("/register")
-    public String register(@ModelAttribute("userData") UserDto userDto, ModelMap model) {
+    @PostMapping("/lodge")
+    public ModelAndView register(@ModelAttribute("userData") @Validated UserDto userDto, ModelMap model,
+            BindingResult bs) {
+        if (bs.hasErrors()) {
+            return new ModelAndView("register", "userData", userDto);
+
+        }
         if (!userDto.getPassword().equals(userDto.getConfirmPassword())) {
-            model.addAttribute("userData", userDto);
+
             model.addAttribute("error", "Passwords do not match!");
-            return "/register";
+            return new ModelAndView("register", "userData", userDto);
         }
         if (userService.isEmailExist(userDto.getEmail())) {
             model.addAttribute("error", "Email already exists");
-            return "/register";
+            return new ModelAndView("register", "userData", userDto);
         }
         userService.addUser(userDto);
-        return "redirect:/";
+        model.addAttribute("success", "Registered Succcessfully!!");
+        return new ModelAndView("register", "userData", new UserDto());
     }
 
 }

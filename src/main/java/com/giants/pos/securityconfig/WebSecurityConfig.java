@@ -1,5 +1,4 @@
 package com.giants.pos.securityconfig;
-
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
@@ -33,8 +32,9 @@ public class WebSecurityConfig {
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception{
         http.authenticationProvider(authenticationProvider());
-
-      http.authorizeRequests().antMatchers("/**").hasAnyAuthority("ADMIN")
+      
+      http.authorizeRequests().antMatchers("/admin/**").hasAuthority("ADMIN")
+                .antMatchers("/salesperson/**").hasAuthority("SALESPERSON")
                 .anyRequest().authenticated()
                 .and()
                 .csrf().disable()
@@ -42,7 +42,7 @@ public class WebSecurityConfig {
                 .loginPage("/")
                 .usernameParameter("email")
                 .loginProcessingUrl("/login")
-                .defaultSuccessUrl("/dashboard")
+                .defaultSuccessUrl("/admin/dashboard")
                 .permitAll()
                 .and()
                 .logout()

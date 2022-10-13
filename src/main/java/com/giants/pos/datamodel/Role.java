@@ -1,4 +1,6 @@
 package com.giants.pos.datamodel;
+
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -20,5 +22,6 @@ public class Role {
 
     @Column(nullable = false)
     private String name;
+
     
 }

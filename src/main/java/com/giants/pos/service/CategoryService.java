@@ -19,7 +19,7 @@ public class CategoryService {
     }
 
     public Category findById(Integer id) {
-        return categoryRepository.findById(id).get();
+        return categoryRepository.findById(id).orElse(null);
     }
 
     public List<Category> findAllByOrderByIdDesc() {

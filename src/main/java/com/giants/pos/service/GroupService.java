@@ -19,7 +19,7 @@ public class GroupService {
     }
 
     public Group findById(Integer id) {
-        return groupRepository.findById(id).get();
+        return groupRepository.findById(id).orElse(null);
     }
 
     public void save(Group group) {
