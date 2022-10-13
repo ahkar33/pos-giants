@@ -33,7 +33,7 @@ public class AppUserInitializer {
             admin.setName("ADMIN");
             roleRepo.save(admin);
             var salePerson = new Role();
-            salePerson.setName("SALEPERSON");
+            salePerson.setName("SALESPERSON");
             roleRepo.save(salePerson);
         }
 
