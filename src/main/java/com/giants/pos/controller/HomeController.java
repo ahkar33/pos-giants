@@ -24,7 +24,7 @@ public class HomeController {
         return "sign-in";
     }
 
-    @GetMapping("/dashboard")
+    @GetMapping("/admin/dashboard")
     public String goToDashboard() {
         return "dashboard";
     }
@@ -36,27 +36,28 @@ public class HomeController {
 
     @GetMapping("/register")
     public ModelAndView setupRegister(ModelMap model) {
-        return new ModelAndView("register","userData",new UserDto());
+        return new ModelAndView("register", "userData", new UserDto());
     }
 
     @PostMapping("/lodge")
-    public ModelAndView register(@ModelAttribute("userData")@Validated UserDto userDto, ModelMap model,BindingResult bs) {
-         if(bs.hasErrors()){
-            return new ModelAndView("register","userData",userDto);
-        
-         }
+    public ModelAndView register(@ModelAttribute("userData") @Validated UserDto userDto, ModelMap model,
+            BindingResult bs) {
+        if (bs.hasErrors()) {
+            return new ModelAndView("register", "userData", userDto);
+
+        }
         if (!userDto.getPassword().equals(userDto.getConfirmPassword())) {
-            
+
             model.addAttribute("error", "Passwords do not match!");
-            return new ModelAndView("register","userData",userDto);
+            return new ModelAndView("register", "userData", userDto);
         }
         if (userService.isEmailExist(userDto.getEmail())) {
             model.addAttribute("error", "Email already exists");
-            return new ModelAndView("register","userData",userDto);
+            return new ModelAndView("register", "userData", userDto);
         }
         userService.addUser(userDto);
-        model.addAttribute("success","Registered Succcessfully!!");
-      return new ModelAndView("register","userData", new UserDto());
+        model.addAttribute("success", "Registered Succcessfully!!");
+        return new ModelAndView("register", "userData", new UserDto());
     }
 
 }

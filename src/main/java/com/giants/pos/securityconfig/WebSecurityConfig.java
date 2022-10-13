@@ -42,7 +42,7 @@ public class WebSecurityConfig {
                 .loginPage("/")
                 .usernameParameter("email")
                 .loginProcessingUrl("/login")
-                .defaultSuccessUrl("/default")
+                .defaultSuccessUrl("/admin/dashboard")
                 .permitAll()
                 .and()
                 .logout()

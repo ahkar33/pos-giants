@@ -2,7 +2,6 @@ package com.giants.pos.controller;
 
 import java.text.DecimalFormat;
 import java.time.LocalDateTime;
-import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -14,7 +13,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.giants.pos.datamodel.Category;
 import com.giants.pos.datamodel.Group;
 import com.giants.pos.repository.CategoryRepository;
 import com.giants.pos.repository.GroupRepository;
