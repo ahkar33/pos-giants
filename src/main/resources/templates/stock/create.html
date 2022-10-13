@@ -33,8 +33,7 @@
                     <div class="invalid-feedback" th:if="${category != null}">[[${category}]]</div>
                 </div>
                 <div class="col">
-                    <button class="btn btn-primary" type="submit">[[${group == null} ? 'Create' : 'Edit']]
-                        Group</button>
+                    <button class="btn btn-primary" type="submit">Create Group</button>
                     <a th:href="@{/admin/group/list}" class="btn btn-secondary">Group List</a>
                 </div>
             </div>

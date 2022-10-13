@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.giants.pos.datamodel.Category;
 import com.giants.pos.datamodel.Group;
@@ -42,7 +43,7 @@ public class GroupController {
     }
 
     @PostMapping("create")
-    public String store(String name, Integer category, Integer id, ModelMap m){
+    public String store(String name, Integer category, @RequestParam(required = false) Integer id, ModelMap m){
         m.put("old", name);
         if(name.isBlank()){
             m.put("name", "Group Name is required!");
@@ -55,9 +56,19 @@ public class GroupController {
         }
 
         var g = groupRepository.findByName(name);
-        if(g != null && g.getId() != id){
+        if(g != null && id == null){
+            m.put("old", name);
             m.put("name", "Group Name has already existed!");
             return "group/create";
+        }
+
+        if(g != null && id != null){
+            if(g.getId() != id){
+                m.put("old", name);
+                m.put("name", "Group Name has already existed!");
+                m.put("group", groupRepository.findById(id).get());
+                return "group/create";
+            }
         }
 
         var c = categoryRepository.findById(category);

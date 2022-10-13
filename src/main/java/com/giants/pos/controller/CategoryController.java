@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.giants.pos.datamodel.Category;
 import com.giants.pos.repository.CategoryRepository;
@@ -35,17 +36,26 @@ public class CategoryController {
     }
 
     @PostMapping("create")
-    public String store(String name, ModelMap m, Integer id){
+    public String store(String name, ModelMap m, @RequestParam(required = false) Integer id){
         if(name.isBlank()){
             m.put("name", "Category name is required!");
             return "category/create";
         }
 
         var c = categoryRepository.findByName(name);
-        if(c != null && c.getId() != id){
+        if(c != null && id == null){
             m.put("old", name);
             m.put("name", "Category name has already existed!");
             return "category/create";
+        }
+
+        if(c != null && id != null){
+            if(c.getId() != id){
+                m.put("name", "Category name has already existed!");
+                m.put("category", categoryRepository.findById(id).get());
+                m.put("old", name);
+                return "category/create";
+            }
         }
 
         var email = SecurityContextHolder.getContext().getAuthentication().getName();
