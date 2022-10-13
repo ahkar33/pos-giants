@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/assets/bootstrap/css/bootstrap.min.css">
+</head>
+
+<body>
+    <div class="container py-5">
+        <form th:action="@{/admin/group/create}" method="post">
+            <div class="row">
+                <div class="col">
+                    <input type="text" class="form-control" name="name" placeholder="Enter Group Name"
+                        th:value="${group != null} ? ${group.name} : ${old}"
+                        th:classappend="${name == null} ? '' : 'is-invalid'">
+                    <div class="invalid-feedback" th:if="${name != null}">[[${name}]]</div>
+                    <input type="hidden" th:if="${group != null}" name="id" th:value="${group.id}">
+                </div>
+                <div class="col">
+                    <select name="category" class="form-select"
+                        th:classappend="${category == null} ? '' : 'is-invalid'">
+                        <option th:value="${c.id}" th:each="c : ${categories}" th:if="${group != null}"
+                            th:selected="${group.category.id == c.id}">[[${c.name}]]</option>
+                        <option th:value="${c.id}" th:each="c : ${categories}" th:if="${group == null}">[[${c.name}]]
+                        </option>
+                    </select>
+                    <div class="invalid-feedback" th:if="${category != null}">[[${category}]]</div>
+                </div>
+                <div class="col">
+                    <button class="btn btn-primary" type="submit">Create Group</button>
+                    <a th:href="@{/admin/group/list}" class="btn btn-secondary">Group List</a>
+                </div>
+            </div>
+        </form>
+    </div>
+    <script src="/assets/bootstrap/js/bootstrap.min.js"></script>
+
+</body>
+
+</html>

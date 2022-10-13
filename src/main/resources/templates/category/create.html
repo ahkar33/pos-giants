@@ -14,16 +14,21 @@
         <form th:action="@{/admin/category/create}" method="post">
             <div class="row">
                 <div class="col">
-                    <input type="text" class="form-control" name="name" placeholder="Enter Category Name">
-                    <input type="hidden" name="user_id" value="">
+                    <input type="text" class="form-control" name="name" placeholder="Enter Category Name"
+                        th:value="${category != null} ? ${category.name} : ${old}"
+                        th:classappend="${name == null} ? '' : 'is-invalid'">
+                    <div class="invalid-feedback" th:if="${name != null}">[[${name}]]</div>
+                    <input type="hidden" th:if="${category != null}" name="id" th:value="${category.id}">
                 </div>
                 <div class="col">
                     <button class="btn btn-primary" type="submit">Create Category</button>
+                    <a th:href="@{/admin/category/list}" class="btn btn-secondary">Category List</a>
                 </div>
             </div>
         </form>
     </div>
     <script src="/assets/bootstrap/js/bootstrap.min.js"></script>
+
 </body>
 
 </html>
