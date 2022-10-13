@@ -2,16 +2,19 @@ package com.giants.pos.controller;
 
 import java.text.DecimalFormat;
 import java.time.LocalDateTime;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.giants.pos.datamodel.Category;
 import com.giants.pos.datamodel.Group;
 import com.giants.pos.repository.CategoryRepository;
 import com.giants.pos.repository.GroupRepository;
@@ -35,20 +38,41 @@ public class GroupController {
 
     @GetMapping("create")
     public String create(ModelMap m){
-        m.put("categories", categoryRepository.findAll());
         return "group/create";
     }
 
     @PostMapping("create")
-    public String store(String name, int category, Integer id){
+    public String store(String name, Integer category, Integer id, ModelMap m){
+        m.put("old", name);
+        if(name.isBlank()){
+            m.put("name", "Group Name is required!");
+            return "group/create";
+        }
+
+        if(category == null){
+            m.put("category", "Category is required!");
+            return "group/create";
+        }
+
+        var g = groupRepository.findByName(name);
+        if(g != null && g.getId() != id){
+            m.put("name", "Group Name has already existed!");
+            return "group/create";
+        }
+
+        var c = categoryRepository.findById(category);
+
+        if(!c.isPresent()){
+            m.put("category", "Please select valid category!");
+            return "group/create";
+        }
 
         var email = SecurityContextHolder.getContext().getAuthentication().getName();
         var user = userRepository.findByEmail(email);
-        var c = categoryRepository.findById(category).get();
 
         if(id == null){
             var group = new Group();
-            group.setCategory(c);
+            group.setCategory(c.get());
             group.setCode("gp".concat(df.format(count)));
             group.setCreated_at(LocalDateTime.now());
             group.setCreated_by(user.getName());
@@ -61,7 +85,7 @@ public class GroupController {
         }
         
         var group = groupRepository.findById(id).get();
-        group.setCategory(c);
+        group.setCategory(c.get());
         group.setName(name);
         group.setUpdated_at(LocalDateTime.now());
         group.setUpdated_by(user.getName());
@@ -83,8 +107,12 @@ public class GroupController {
     
     @GetMapping("edit/{id}")
     public String edit(@PathVariable int id, ModelMap m){
-        m.put("categories", categoryRepository.findAll());
         m.put("group", groupRepository.findById(id).get());
         return "group/create";
+    }
+
+    @ModelAttribute
+    public void addAttributes(ModelMap m) {
+        m.put("categories", categoryRepository.findAll());
     }
 }

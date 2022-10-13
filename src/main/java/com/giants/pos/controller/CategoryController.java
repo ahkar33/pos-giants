@@ -42,7 +42,7 @@ public class CategoryController {
         }
 
         var c = categoryRepository.findByName(name);
-        if(c != null){
+        if(c != null && c.getId() != id){
             m.put("old", name);
             m.put("name", "Category name has already existed!");
             return "category/create";

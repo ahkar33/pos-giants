@@ -11,5 +11,7 @@ import com.giants.pos.datamodel.Group;
 public interface GroupRepository extends JpaRepository<Group, Integer> {
 
     List<Group> findAllByOrderByIdDesc();
+
+    Group findByName(String name);
     
 }

@@ -21,10 +21,14 @@
                     <input type="hidden" th:if="${group != null}" name="id" th:value="${group.id}">
                 </div>
                 <div class="col">
-                    <select name="category" class="form-select">
-                        <option th:value="${c.id}" th:each="c : ${categories}"
+                    <select name="category" class="form-select"
+                        th:classappend="${category == null} ? '' : 'is-invalid'">
+                        <option th:value="${c.id}" th:each="c : ${categories}" th:if="${group != null}"
                             th:selected="${group.category.id == c.id}">[[${c.name}]]</option>
+                        <option th:value="${c.id}" th:each="c : ${categories}" th:if="${group == null}">[[${c.name}]]
+                        </option>
                     </select>
+                    <div class="invalid-feedback" th:if="${category != null}">[[${category}]]</div>
                 </div>
                 <div class="col">
                     <button class="btn btn-primary" type="submit">Create Group</button>
