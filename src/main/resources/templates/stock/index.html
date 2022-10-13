@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/assets/css/datatable.min.css">
+</head>
+
+<body>
+    <div class="container py-5">
+        <form th:action="@{/admin/group/create}" method="post">
+            <div class="row">
+                <div class="d-flex justify-content-between align-items-center mb-3">
+                    <h4>Group List</h4>
+                    <a th:href="@{/admin/group/create}" class="btn btn-primary">Create Group</a>
+                </div>
+                <table class="table table-hovered table-striped" id="groupTable">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Code</th>
+                            <th>Name</th>
+                            <th>Category</th>
+                            <th>Created By</th>
+                            <th>Updated By</th>
+                            <th>Created At</th>
+                            <th>Updated at</th>
+                            <th>Controls</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr th:each="g,row : ${groups}" style="vertical-align: middle;">
+                            <td>[[${row.index}+1]]</td>
+                            <td>[[${g.code}]]</td>
+                            <td>[[${g.name}]]</td>
+                            <td>[[${g.category.name}]]</td>
+                            <td>[[${g.created_by}]]</td>
+                            <td>[[${g.updated_by}]]</td>
+                            <td>[[${#temporals.format(g.created_at, 'yyyy-MM-dd hh:mm a')}]]</td>
+                            <td>[[${#temporals.format(g.updated_at, 'yyyy-MM-dd hh:mm a')}]]</td>
+                            <td class="d-flex">
+                                <a th:href="@{/admin/group/edit/}+${g.id}" class="btn btn-primary me-2">Edit</a>
+                                <a th:href="@{/admin/group/delete/}+${g.id}" class="btn btn-danger">Delete</a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </form>
+    </div>
+    <script src="/assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="/assets/js/jquery.min.js"></script>
+    <script src="/assets/js/datatable.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('#groupTable').DataTable();
+        });
+    </script>
+</body>
+
+</html>

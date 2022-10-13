@@ -10,28 +10,27 @@ import com.giants.pos.repository.GroupRepository;
 
 @Service
 public class GroupService {
-
+    
     @Autowired
     private GroupRepository groupRepository;
 
-    public Group getGroupByName(String name) {
+    public Group findByName(String name) {
         return groupRepository.findByName(name);
     }
 
-    public Group getGroupById(int id) {
+    public Group findById(Integer id) {
         return groupRepository.findById(id).orElse(null);
     }
 
-    public void deleteGroupById(int id) {
-        groupRepository.deleteById(id);
-    }
-
-    public void addGroup(Group group) {
+    public void save(Group group) {
         groupRepository.save(group);
     }
 
-    public List<Group> getAllByDescId() {
+    public List<Group> findAllByOrderByIdDesc() {
         return groupRepository.findAllByOrderByIdDesc();
     }
 
+    public void deleteById(int id) {
+        groupRepository.deleteById(id);
+    }
 }
