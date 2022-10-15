@@ -1,63 +1,159 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="/assets/bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="/assets/css/datatable.min.css">
+<head th:insert="admin-fragments :: admin_head">
+    <title>Stock List</title>
 </head>
 
-<body>
-    <div class="container py-5">
-        <form th:action="@{/admin/group/create}" method="post">
-            <div class="row">
-                <div class="d-flex justify-content-between align-items-center mb-3">
-                    <h4>Group List</h4>
-                    <a th:href="@{/admin/group/create}" class="btn btn-primary">Create Group</a>
+<body class="nav-fixed bg-light">
+    <!-- Nav Bar -->
+    <div th:insert="admin-fragments :: admin_navbar" />
+    <div id="layoutDrawer">
+        <!-- side bar -->
+        <div th:insert="admin-fragments :: admin_sidebar" />
+        <!-- Layout content-->
+        <div id="layoutDrawer_content">
+            <!-- Main page content-->
+            <main>
+                <!-- Page header-->
+                <header style="background-color: #ec4f4f">
+                    <div class="align-items-center container-xl d-flex flex-row justify-content-between px-5">
+                        <h1 class="text-white py-3 mb-0 display-6">Stock List</h1>
+                        <a class="btn btn-light text-capitalize" data-bs-toggle="modal"
+                            data-bs-target="#exampleModal"><i
+                                class="material-icons text-muted me-2">add_circle_outline</i>Create Stock</a>
+                    </div>
+                </header>
+                <form th:action="@{/admin/stock/create}" method="post">
+                    <div class="container-xl p-5">
+                        <div class="card card-raised table-card-shadow">
+                            <div class="card-body text-center p-5">
+                                <table class="display nowrap table table-striped" style="width:100%" id="groupTable">
+                                    <thead>
+                                        <tr>
+                                            <th>#</th>
+                                            <th>Code</th>
+                                            <th>Name</th>
+                                            <th>Category</th>
+                                            <th>Created By</th>
+                                            <th>Updated By</th>
+                                            <th>Created At</th>
+                                            <th>Updated at</th>
+                                            <th>Controls</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr th:each="g,row : ${groups}" style="vertical-align: middle;">
+                                            <td>[[${row.index}+1]]</td>
+                                            <td>[[${g.code}]]</td>
+                                            <td>[[${g.name}]]</td>
+                                            <td>[[${g.category.name}]]</td>
+                                            <td>[[${g.created_by}]]</td>
+                                            <td>[[${g.updated_by}]]</td>
+                                            <td>[[${#temporals.format(g.created_at, 'yyyy-MM-dd hh:mm a')}]]</td>
+                                            <td>[[${#temporals.format(g.updated_at, 'yyyy-MM-dd hh:mm a')}]]</td>
+                                            <td class="d-flex">
+                                                <a th:href="@{/admin/group/edit/}+${g.id}"
+                                                    class="btn btn-primary me-2">Edit</a>
+                                                <a th:href="@{/admin/group/delete/}+${g.id}"
+                                                    class="btn btn-danger">Delete</a>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </main>
+
+            <!-- Modal -->
+            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content">
+                        <form th:action="@{/admin/group/create}" method="post">
+                            <div class="modal-header">
+                                <h1 class="modal-title fs-5" id="exampleModalLabel">Create Stock</h1>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                    aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <input type="text" class="form-control" name="name" placeholder="Enter Group Name"
+                                    th:if="${group != null}" th:value="${old != null} ? ${old} : ${group?.name}"
+                                    th:classappend="${name == null} ? '' : 'is-invalid'">
+                                <input type="text" class="form-control" name="name" placeholder="Enter Group Name"
+                                    th:if="${group == null}" th:value="${old}"
+                                    th:classappend="${name == null} ? '' : 'is-invalid'">
+                                <div class="invalid-feedback" th:if="${name != null}">[[${name}]]</div>
+                                <input type="hidden" th:if="${group != null}" name="id" th:value="${group.id}">
+                                <select name="category" class="form-select"
+                                    th:classappend="${category == null} ? '' : 'is-invalid'">
+                                    <option th:value="${c.id}" th:each="c : ${categories}" th:if="${group != null}"
+                                        th:selected="${group.category.id == c.id}">[[${c.name}]]</option>
+                                    <option th:value="${c.id}" th:each="c : ${categories}" th:if="${group == null}">
+                                        [[${c.name}]]
+                                    </option>
+                                </select>
+                                <div class="invalid-feedback" th:if="${category != null}">[[${category}]]</div>
+                            </div>
+                            <div class="modal-footer modal-footer-padding">
+                                <button type="button" class="btn btn-secondary modal-close-btn"
+                                    data-bs-dismiss="modal">Close</button>
+                                <button type="submit" class="btn btn-primary modal-submit-btn">Create Stock</button>
+                            </div>
+                        </form>
+                    </div>
                 </div>
-                <table class="table table-hovered table-striped" id="groupTable">
-                    <thead>
-                        <tr>
-                            <th>#</th>
-                            <th>Code</th>
-                            <th>Name</th>
-                            <th>Category</th>
-                            <th>Created By</th>
-                            <th>Updated By</th>
-                            <th>Created At</th>
-                            <th>Updated at</th>
-                            <th>Controls</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr th:each="g,row : ${groups}" style="vertical-align: middle;">
-                            <td>[[${row.index}+1]]</td>
-                            <td>[[${g.code}]]</td>
-                            <td>[[${g.name}]]</td>
-                            <td>[[${g.category.name}]]</td>
-                            <td>[[${g.created_by}]]</td>
-                            <td>[[${g.updated_by}]]</td>
-                            <td>[[${#temporals.format(g.created_at, 'yyyy-MM-dd hh:mm a')}]]</td>
-                            <td>[[${#temporals.format(g.updated_at, 'yyyy-MM-dd hh:mm a')}]]</td>
-                            <td class="d-flex">
-                                <a th:href="@{/admin/group/edit/}+${g.id}" class="btn btn-primary me-2">Edit</a>
-                                <a th:href="@{/admin/group/delete/}+${g.id}" class="btn btn-danger">Delete</a>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
             </div>
-        </form>
+
+            <!-- Footer-->
+            <!-- Min-height is set inline to match the height of the drawer footer-->
+            <footer class="py-4 mt-auto border-top" style="min-height: 74px">
+                <div class="container-xl px-5">
+                    <div class="d-flex flex-column flex-sm-row align-items-center justify-content-sm-between small">
+                        <div class="me-sm-2">Copyright © 2022</div>
+                        <div class="d-flex ms-sm-2">
+                            <a class="text-decoration-none" href="#!">Privacy Policy</a>
+                            <div class="mx-1">·</div>
+                            <a class="text-decoration-none" href="#!">Terms &amp; Conditions</a>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+        </div>
     </div>
-    <script src="/assets/bootstrap/js/bootstrap.min.js"></script>
-    <script src="/assets/js/jquery.min.js"></script>
-    <script src="/assets/js/datatable.min.js"></script>
+    <div th:insert="admin-fragments :: admin_footer" />
     <script>
         $(document).ready(function () {
-            $('#groupTable').DataTable();
+            var table = $('#groupTable').DataTable({
+                "scrollX": true,
+                dom: 'Bfrtip',
+                buttons: [
+                    'pageLength',
+                    'colvis',
+                    {
+                        extend: 'excel',
+                        autoFilter: true,
+                        exportOptions: {
+                            columns: ':visible'
+                        }
+                    },
+                    {
+                        extend: 'pdfHtml5',
+                        exportOptions: {
+                            columns: ':visible'
+                        }
+                    },
+                    {
+                        extend: 'print'
+                    }
+                ], select: true,
+                lengthMenu: [
+                    [10, 25, 50, -1],
+                    ['10 rows', '25 rows', '50 rows', 'Show all']
+                ],
+            });
         });
     </script>
 </body>
