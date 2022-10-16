@@ -137,7 +137,7 @@
                             <hr class="dropdown-divider" />
                         </li>
                         <li>
-                            <a class="dropdown-item" th:href="@{/logout}">
+                            <a class="dropdown-item" onclick="logout()">
                                 <i class="material-icons leading-icon">logout</i>
                                 <div class="me-3">Logout</div>
                             </a>
@@ -186,8 +186,7 @@
                     <div class="drawer-collapse-arrow"><i class="material-icons">expand_more</i></div>
                 </a>
                 <!-- Nested drawer nav (Category)-->
-                <div class="collapse" id="collapsePages" aria-labelledby="headingTwo"
-                    data-bs-parent="#drawerAccordion">
+                <div class="collapse" id="collapsePages" aria-labelledby="headingTwo" data-bs-parent="#drawerAccordion">
                     <nav class="drawer-menu-nested nav accordion" id="drawerAccordionPages">
                         <!-- Drawer link (Category)-->
                         <a class="nav-link collapsed" href="javascript:void(0);" data-bs-toggle="collapse"
@@ -280,6 +279,27 @@
     <script src="/assets/js/datatable/pdfmake.min.js"></script>
     <script src="/assets/js/datatable/vfs_fonts.js"></script>
     <script src="/assets/js/datatable/dataTables.select.min.js"></script>
+
+    <!-- sweetalert2 -->
+    <script src="/assets/js/sweetalert2.all.min.js"></script>
+
+
+    <script>
+        const logout = () => {
+            Swal.fire({
+                title: 'Are you sure want to Logout?',
+                icon: 'warning',
+                showCancelButton: true,
+                cancelButtonColor: '#3385ff',
+                confirmButtonColor: '#d33',
+                confirmButtonText: 'Logout'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    window.location = "http://localhost:8080/logout";
+                }
+            })
+        }
+    </script>
 </div>
 
 </html>
