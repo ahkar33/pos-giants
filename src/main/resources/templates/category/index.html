@@ -28,7 +28,7 @@
                 <div class="container-xl p-5">
                     <div class="card card-raised table-card-shadow">
                         <div class="card-body text-center p-5">
-                            <table class="display nowrap table table-striped" style="width:100%" id="categoryTable">
+                            <table class="display nowrap table table-striped" style="width:100%" id="tableOne">
                                 <thead>
                                     <tr>
                                         <th>#</th>
@@ -52,10 +52,10 @@
                                         <td>[[${#temporals.format(c.updated_at, 'yyyy-MM-dd hh:mm a')}]]</td>
                                         <td>
                                             <a th:href="@{/admin/category/delete/}+${c.id}"
-                                                class="btn btn-outline-danger"><i
+                                                class="btn table-danger-out-btn me-2"><i
                                                     class="material-icons fs-5">delete</i></a>
                                             <a th:href="@{/admin/category/edit/}+${c.id}"
-                                                class="btn table-prim-button me-2" data-bs-toggle="modal"
+                                                class="btn table-pri-btn" data-bs-toggle="modal"
                                                 data-bs-target="#exampleModal">Edit</a>
                                         </td>
                                     </tr>
@@ -103,56 +103,13 @@
                 </div>
             </div>
 
-            <!-- Footer-->
-            <!-- Min-height is set inline to match the height of the drawer footer-->
-            <footer class="py-4 mt-auto border-top" style="min-height: 74px">
-                <div class="container-xl px-5">
-                    <div class="d-flex flex-column flex-sm-row align-items-center justify-content-sm-between small">
-                        <div class="me-sm-2">Copyright © 2022</div>
-                        <div class="d-flex ms-sm-2">
-                            <a class="text-decoration-none" href="#!">Privacy Policy</a>
-                            <div class="mx-1">·</div>
-                            <a class="text-decoration-none" href="#!">Terms &amp; Conditions</a>
-                        </div>
-                    </div>
-                </div>
+            <!-- copyright footer -->
+            <div th:insert="admin-fragments :: admin_cr_footer" />
             </footer>
         </div>
     </div>
 
     <div th:insert="admin-fragments :: admin_footer" />
-    <script>
-        $(document).ready(function () {
-            var table = $('#categoryTable').DataTable({
-                "scrollX": true,
-                dom: 'Bfrtip',
-                buttons: [
-                    'pageLength',
-                    'colvis',
-                    {
-                        extend: 'excel',
-                        autoFilter: true,
-                        exportOptions: {
-                            columns: ':visible'
-                        }
-                    },
-                    {
-                        extend: 'pdfHtml5',
-                        exportOptions: {
-                            columns: ':visible'
-                        }
-                    },
-                    {
-                        extend: 'print'
-                    }
-                ], select: true,
-                lengthMenu: [
-                    [10, 25, 50, -1],
-                    ['10 rows', '25 rows', '50 rows', 'Show all']
-                ],
-            });
-        });
-    </script>
 </body>
 
 </html>

@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head th:insert="admin-fragments :: admin_head">
+    <title>Add Product</title>
+</head>
+
+<body class="nav-fixed bg-light">
+    <!-- Nav Bar -->
+    <div th:insert="admin-fragments :: admin_navbar" />
+    <!-- Layout wrapper-->
+    <div id="layoutDrawer">
+        <!-- side bar -->
+        <div th:insert="admin-fragments :: admin_sidebar" />
+        <!-- Layout content-->
+        <div id="layoutDrawer_content">
+            <!-- Main page content-->
+            <main>
+                <!-- Page header-->
+                <header style="background-color: #ec4f4f">
+                    <div class="align-items-center container-xl d-flex flex-row justify-content-between px-5">
+                        <h1 class="text-white py-3 mb-0 display-6">Add Product</h1>
+                    </div>
+                </header>
+                <div class="container-xl p-4">
+                    <div class="card card-raised table-card-shadow ps-4 pe-4 pt-2 pb-2">.
+                        <form>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <label class="text-body">Product ID</label>
+                                    <fieldset disabled class="form-group mb-3">
+                                        <input type="text" aria-describedby="" value="" placeholder="PRD001"
+                                            class="form-control bg-white" />
+                                    </fieldset>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <label class="text-body">Product Name</label>
+                                    <fieldset class="form-group mb-3">
+                                        <input type="text" aria-describedby="" value=""
+                                            class="form-control bg-white" />
+                                    </fieldset>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <label class="text-body">Product Code</label>
+                                    <fieldset class="form-group mb-3">
+                                        <input type="text" aria-describedby="" value=""
+                                            class="form-control bg-white" />
+                                    </fieldset>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <label class="text-body">Group</label>
+                                    <fieldset class="form-group mb-3">
+                                        <select class="form-select">
+                                            <option selected disabled value="">Select Group</option>
+                                            <option value="1">Coffee</option>
+                                            <option value="1">T-Shirt</option>
+                                            <option value="1">Trouser</option>
+                                        </select>
+                                    </fieldset>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <label class="text-body">Category</label>
+                                    <fieldset class="form-group mb-3">
+                                        <select class="form-select">
+                                            <option selected disabled value="">Select Category</option>
+                                            <option value="1">Electronic</option>
+                                            <option value="1">Food</option>
+                                            <option value="1">Fashion</option>
+                                        </select>
+                                    </fieldset>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <label>Product Unit</label>
+                                    <fieldset class="form-group mb-3">
+                                        <select class="form-select">
+                                            <option selected disabled value="">Select Unit</option>
+                                            <option value="1">Bottle</option>
+                                            <option value="1">Bar</option>
+                                            <option value="1">Can</option>
+                                        </select>
+                                    </fieldset>
+                                </div>
+
+                                <div class="col-md-12">
+                                    <label class="text-body">Description</label>
+                                    <fieldset class="form-group mb-3">
+                                        <textarea id="label-textarea" rows="6" name="description" placeholder="Add some description" spellcheck="false" class="form-control" style="height: 130px;"></textarea>
+                                    </fieldset>
+                                </div>
+                            </div>
+                            <div class="d-flex justify-content-end">
+                                <a class="btn table-pri-btn mb-3 mt-2">Submit</a>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </main>
+
+            <!-- copyright footer -->
+            <div th:insert="admin-fragments :: admin_cr_footer" />
+        </div>
+    </div>
+
+    <div th:insert="admin-fragments :: admin_footer" />
+</body>
+
+</html>

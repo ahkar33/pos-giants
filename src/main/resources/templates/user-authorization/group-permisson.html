@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head th:insert="admin-fragments :: admin_head">
+    <title>Group Permisson</title>
+</head>
+
+<body class="nav-fixed bg-light">
+    <!-- Nav Bar -->
+    <div th:insert="admin-fragments :: admin_navbar" />
+
+    <!-- Layout wrapper-->
+    <div id="layoutDrawer">
+        <!-- side bar -->
+        <div th:insert="admin-fragments :: admin_sidebar" />
+        <!-- Layout content-->
+        <div id="layoutDrawer_content">
+            <!-- Main page content-->
+            <main>
+                <form method="post">
+                    <!-- Page header-->
+                    <header style="background-color: #ec4f4f">
+                        <div class="align-items-center container-xl d-flex flex-row justify-content-between px-5">
+                            <h1 class="text-white py-3 mb-0 display-6">Group Permisson</h1>
+                        </div>
+                    </header>
+                    <div class="container-xl p-5">
+                        <div class="card card-raised table-card-shadow">
+                            <div class="card-body text-center p-5">
+                                <table class="display nowrap table table-striped" style="width:100%" id="tableOne">
+                                    <thead>
+                                        <tr>
+                                            <th>Select</th>
+                                            <th>ID</th>
+                                            <th>Name</th>
+                                            <th>Email Address</th>
+                                            <th>Permission</th>
+                                            <th>Submit</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr style="vertical-align: middle;">
+                                            <td><input type="checkbox" class="form-check-input" id="exampleCheck1"/></td>
+                                            <td>USR001</td>
+                                            <td>Mg MG</td>
+                                            <td>email@gmail.com</td>
+                                            <td>
+                                                <select class="form-select">
+                                                    <option selected value="1">Default Permission</option>
+                                                    <option value="2">Full Permission</option>
+                                                </select>
+                                            </td>
+                                            <td>
+                                                <a class="btn table-pri-btn">Submit</a>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </main>
+
+            <!-- copyright footer -->
+            <div th:insert="admin-fragments :: admin_cr_footer" />
+        </div>
+    </div>
+
+    <div th:insert="admin-fragments :: admin_footer" />
+
+</body>
+
+</html>
