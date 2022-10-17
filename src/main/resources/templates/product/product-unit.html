@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head th:insert="admin-fragments :: admin_head">
+    <title>Product Unit</title>
+</head>
+
+<body class="nav-fixed bg-light">
+    <!-- Nav Bar -->
+    <div th:insert="admin-fragments :: admin_navbar" />
+
+    <!-- Layout wrapper-->
+    <div id="layoutDrawer">
+        <!-- side bar -->
+        <div th:insert="admin-fragments :: admin_sidebar" />
+        <!-- Layout content-->
+        <div id="layoutDrawer_content">
+            <!-- Main page content-->
+            <main>
+                <form method="post">
+                    <!-- Page header-->
+                    <header style="background-color: #ec4f4f">
+                        <div class="align-items-center container-xl d-flex flex-row justify-content-between px-5">
+                            <h1 class="text-white py-3 mb-0 display-6">Product Unit</h1>
+                            <a class="btn btn-light text-capitalize" data-bs-toggle="modal"
+                            data-bs-target="#exampleModal"><i
+                                class="material-icons text-muted me-2">add_circle_outline</i>Add Product Unit</a>
+                        </div>
+                    </header>
+                    <div class="container-xl p-4">
+                        <div class="card card-raised table-card-shadow">
+                            <div class="card-body text-center p-5">
+                                <table class="display nowrap table table-striped" style="width:100%" id="tableOne">
+                                    <thead>
+                                        <tr>
+                                            <th>ID</th>
+                                            <th>Name</th>
+                                            <th>Created Date</th>
+                                            <th>Created By</th>
+                                            <th>Action</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr style="vertical-align: middle;">
+                                            <td>UIT001</td>
+                                            <td>Box</td>
+                                            <td>14-10-2022 22:41:52</td>
+                                            <td>Admin</td>
+                                            <td><a class="btn table-danger-out-btn ps-2 pe-2" data-bs-toggle="tooltip"
+                                                data-bs-placement="top" data-bs-custom-class="custom-tooltip"
+                                                data-bs-title="Delete"><i class="material-icons">delete</i></a></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </main>
+
+            <!-- Modal -->
+            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content">
+                        <form method="post">
+                            <div class="modal-header">
+                                <h1 class="modal-title fs-5" id="exampleModalLabel">Add Product Unit</h1>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                    aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <label class="form-label">Product Unit ID</label>
+                                <input type="text" disabled class="modal-input-style form-control mb-2" name="name"
+                                    placeholder="UIT003">
+                                <label class="form-label">Product Unit Name</label>
+                                <input type="text" class="modal-input-style form-control" name="name"
+                                    placeholder="Enter Product Name">
+                            </div>
+                            <div class="modal-footer modal-footer-padding">
+                                <button type="button" class="btn btn-secondary modal-close-btn"
+                                    data-bs-dismiss="modal">Close</button>
+                                <button type="submit" class="btn btn-primary modal-submit-btn">Add Product Unit</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <!-- copyright footer -->
+            <div th:insert="admin-fragments :: admin_cr_footer" />
+        </div>
+    </div>
+
+    <div th:insert="admin-fragments :: admin_footer" />
+
+</body>
+
+</html>

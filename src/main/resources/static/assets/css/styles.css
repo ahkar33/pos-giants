@@ -5433,6 +5433,10 @@ div.code-toolbar>.toolbar span .badge {
   color: #3f3f3f;
 }
 
+.nav-icon-size{
+  font-size: 20px;
+}
+
 @-webkit-keyframes progress-bar-stripes {
   0% {
     background-position-x: 1rem;
@@ -9247,7 +9251,7 @@ div.code-toolbar>.toolbar span.placeholder::before {
 
 .bg-dark {
   --bs-bg-opacity: 1;
-  background-color: rgba(var(--bs-dark-rgb), var(--bs-bg-opacity)) !important;
+  background-color: #2e2e2e !important;
 }
 
 .bg-white {
@@ -27092,7 +27096,7 @@ div.code-toolbar>.toolbar .top-app-bar.navbar-light .card .card-actions .card-ac
   padding-left: 1.5rem;
   padding-right: 1.5rem;
   position: relative;
-  font-size: 1.05rem;
+  font-size: 1.0rem;
   line-height: 1;
   min-height: 2.75rem;
 }
@@ -27102,10 +27106,6 @@ div.code-toolbar>.toolbar .top-app-bar.navbar-light .card .card-actions .card-ac
   margin-right: 1rem;
 }
 
-.drawer .drawer-menu .nav .nav-link .nav-link-icon i.material-icons {
-  font-size: 1.25rem;
-}
-
 .drawer .drawer-menu .nav .nav-link .drawer-collapse-arrow {
   display: inline-block;
   margin-left: auto;
@@ -27113,7 +27113,7 @@ div.code-toolbar>.toolbar .top-app-bar.navbar-light .card .card-actions .card-ac
 }
 
 .drawer .drawer-menu .nav .nav-link .drawer-collapse-arrow i.material-icons {
-  font-size: 1.125rem;
+  font-size: 1.0rem;
 }
 
 .drawer .drawer-menu .nav .nav-link.collapsed .drawer-collapse-arrow {
@@ -29084,16 +29084,6 @@ pre[class*="language-"] {
   background-color: #ee5d5d;
 }
 
-.table-prim-button {
-  background-color: #4d4dff;
-  color: #fff;
-}
-
-.table-prim-button:hover {
-  background-color: #6666ff;
-  color: #fff;
-}
-
 .table-danger-button {
   background-color: #cc0000;
   color: #fff;
@@ -29412,3 +29402,48 @@ dl {
   background-color: rgb(102,210,138);
 }
 /* dasboard card end */
+
+.table-pri-btn {
+  background-color: #1a53ff;
+  color: #fff;
+  text-transform: capitalize;
+}
+
+.table-pri-btn:hover {
+  background-color: #3366ff;
+  color: #fff;
+  text-transform: capitalize;
+}
+
+.table-pri-out-btn{
+  border-color: #1a53ff;
+  color: #1a53ff;
+  text-transform: capitalize;
+}
+
+.table-pri-out-btn:hover{
+  background-color: #1a53ff;
+  color: #fff;
+  text-transform: capitalize;
+}
+
+.table-danger-out-btn{
+  border-color: #cc0000;
+  color: #cc0000;
+  text-transform: capitalize;
+}
+
+.table-danger-out-btn:hover{
+  background-color: #cc0000;
+  color: #fff;
+  text-transform: capitalize;
+}
+
+.form-check-input{
+  width: 18px;
+  height: 18px;
+}
+
+.icon-fsize-table{
+  font-size: 17px;
+}

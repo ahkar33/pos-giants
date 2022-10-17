@@ -9,6 +9,9 @@
     <link
         href="https://fonts.googleapis.com/css?family=Material+Icons|Material+Icons+Outlined|Material+Icons+Two+Tone|Material+Icons+Round|Material+Icons+Sharp"
         rel="stylesheet" />
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+
+
     <!-- Main style -->
     <link rel="stylesheet" href="/assets/css/styles.css">
     <!-- Roboto and Roboto Mono fonts from Google Fonts-->
@@ -174,14 +177,14 @@
                 <div class="drawer-menu-heading">Menu</div>
                 <!-- Drawer link (Dashboards)-->
                 <a class="nav-link collapsed" th:href="@{/admin/dashboard}">
-                    <div class="nav-link-icon"><i class="material-icons">desktop_windows</i></div>
+                    <div class="nav-link-icon"><i class="material-icons nav-icon-size">desktop_windows</i></div>
                     Dashboards
                 </a>
 
                 <!-- Drawer link (Category)-->
                 <a class="nav-link collapsed" href="javascript:void(0);" data-bs-toggle="collapse"
                     data-bs-target="#collapsePages" aria-expanded="false" aria-controls="collapsePages">
-                    <div class="nav-link-icon"><i class="material-icons">category</i></div>
+                    <div class="nav-link-icon"><i class="material-icons nav-icon-size">category</i></div>
                     Category
                     <div class="drawer-collapse-arrow"><i class="material-icons">expand_more</i></div>
                 </a>
@@ -210,30 +213,12 @@
                     </nav>
                 </div>
 
-                <!-- Drawer link (Stock)-->
-                <a class="nav-link collapsed" href="javascript:void(0);" data-bs-toggle="collapse"
-                    data-bs-target="#collapseStocks" aria-expanded="false" aria-controls="collapseStocks">
-                    <div class="nav-link-icon"><i class="material-icons">inventory_2</i></div>
-                    Stock
-                    <div class="drawer-collapse-arrow"><i class="material-icons">expand_more</i></div>
-                </a>
-                <!-- Nested drawer nav (Stock)-->
-                <div class="collapse" id="collapseStocks" aria-labelledby="headingTwo"
-                    data-bs-parent="#drawerAccordion">
-                    <nav class="drawer-menu-nested nav">
-                        <a class="nav-link" th:href="@{category/list}">Stock List</a>
-                    </nav>
-                    <nav class="drawer-menu-nested nav">
-                        <a class="nav-link" th:href="@{category/list}">Create Stock</a>
-                    </nav>
-                </div>
-
                 <!-- Drawer link (Group)-->
                 <a class="nav-link collapsed" href="javascript:void(0);" data-bs-toggle="collapse"
                     data-bs-target="#collapseGroups" aria-expanded="false" aria-controls="collapseGroups">
                     <div class="nav-link-icon"><i class="material-icons">workspaces</i></div>
                     Group
-                    <div class="drawer-collapse-arrow"><i class="material-icons">expand_more</i></div>
+                    <div class="drawer-collapse-arrow"><i class="material-icons nav-icon-size">expand_more</i></div>
                 </a>
                 <!-- Nested drawer nav (Group)-->
                 <div class="collapse" id="collapseGroups" aria-labelledby="headingTwo"
@@ -245,6 +230,73 @@
                         <a class="nav-link">Create Group</a>
                     </nav>
                 </div>
+
+                <!-- Drawer link (Product)-->
+                <a class="nav-link collapsed" href="javascript:void(0);" data-bs-toggle="collapse"
+                    data-bs-target="#collapseProducts" aria-expanded="false" aria-controls="collapseProducts">
+                    <div class="nav-link-icon"><i class='bx bx-package nav-icon-size'></i></div>
+                    Product
+                    <div class="drawer-collapse-arrow"><i class="material-icons">expand_more</i></div>
+                </a>
+                <!-- Nested drawer nav (Product)-->
+                <div class="collapse" id="collapseProducts" aria-labelledby="headingTwo"
+                    data-bs-parent="#drawerAccordion">
+                    <nav class="drawer-menu-nested nav">
+                        <a class="nav-link">Product List</a>
+                    </nav>
+                    <nav class="drawer-menu-nested nav">
+                        <a class="nav-link">Add Product</a>
+                    </nav>
+                    <nav class="drawer-menu-nested nav">
+                        <a class="nav-link">Product Unit</a>
+                    </nav>
+                </div>
+
+                <!-- Drawer link (Stock)-->
+                <a class="nav-link collapsed" href="javascript:void(0);" data-bs-toggle="collapse"
+                    data-bs-target="#collapseStocks" aria-expanded="false" aria-controls="collapseStocks">
+                    <div class="nav-link-icon"><i class="material-icons nav-icon-size">inventory_2</i></div>
+                    Stock
+                    <div class="drawer-collapse-arrow"><i class="material-icons">expand_more</i></div>
+                </a>
+                <!-- Nested drawer nav (Stock)-->
+                <div class="collapse" id="collapseStocks" aria-labelledby="headingTwo"
+                    data-bs-parent="#drawerAccordion">
+                    <nav class="drawer-menu-nested nav">
+                        <a class="nav-link" th:href="@{category/list}">Stock List</a>
+                    </nav>
+                    <nav class="drawer-menu-nested nav">
+                        <a class="nav-link">Create Stock</a>
+                    </nav>
+                </div>
+
+                <!-- Drawer link (User Authorization)-->
+                <a class="nav-link collapsed" href="javascript:void(0);" data-bs-toggle="collapse"
+                    data-bs-target="#collapseUserAuth" aria-expanded="false" aria-controls="collapseUserAuth">
+                    <div class="nav-link-icon"><i class="material-icons nav-icon-size">manage_accounts</i>
+                    </div>
+                    User Authorization
+                    <div class="drawer-collapse-arrow"><i class="material-icons">expand_more</i></div>
+                </a>
+                <!-- Nested drawer nav (User Authorization)-->
+                <div class="collapse" id="collapseUserAuth" aria-labelledby="headingTwo"
+                    data-bs-parent="#drawerAccordion">
+                    <nav class="drawer-menu-nested nav">
+                        <a class="nav-link">Stock Permission</a>
+                    </nav>
+                    <nav class="drawer-menu-nested nav">
+                        <a class="nav-link">Category Permission</a>
+                    </nav>
+                    <nav class="drawer-menu-nested nav">
+                        <a class="nav-link">Group Permission</a>
+                    </nav>
+                </div>
+
+                <!-- Drawer link (POS)-->
+                <a class="nav-link collapsed">
+                    <div class="nav-link-icon"><i class='bx bx-calculator nav-icon-size' ></i></div>
+                    POS
+                </a>
 
             </div>
         </div>
@@ -262,7 +314,23 @@
 </div>
 <!-- Sidebar Menu End -->
 
+<!-- copyright footer start -->
+<!-- Min-height is set inline to match the height of the drawer footer-->
+<footer class="py-4 mt-auto border-top" style="min-height: 74px" th:fragment="admin_cr_footer">
+    <div class="container-xl px-5">
+        <div class="d-flex flex-column flex-sm-row align-items-center justify-content-sm-between small">
+            <div class="me-sm-2">Copyright © 2022</div>
+            <div class="d-flex ms-sm-2">
+                <a class="text-decoration-none" href="#!">Privacy Policy</a>
+                <div class="mx-1">·</div>
+                <a class="text-decoration-none" href="#!">Terms &amp; Conditions</a>
+            </div>
+        </div>
+    </div>
+</footer>
+<!-- copyright footer end -->
 
+<!-- footer start -->
 <div th:fragment="admin_footer">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
         crossorigin="anonymous"></script>
@@ -278,12 +346,11 @@
     <script src="/assets/js/datatable/jszip.min.js"></script>
     <script src="/assets/js/datatable/pdfmake.min.js"></script>
     <script src="/assets/js/datatable/vfs_fonts.js"></script>
-    <script src="/assets/js/datatable/dataTables.select.min.js"></script>
 
     <!-- sweetalert2 -->
     <script src="/assets/js/sweetalert2.all.min.js"></script>
 
-
+    <!-- sweet alert for logout -->
     <script>
         const logout = () => {
             Swal.fire({
@@ -300,6 +367,49 @@
             })
         }
     </script>
+
+    <!-- datatable -->
+    <script>
+        $(document).ready(function () {
+            var table = $('#tableOne').DataTable({
+                "scrollX": true,
+                dom: 'Bfrtip',
+                buttons: [
+                    'pageLength',
+                    'colvis',
+                    {
+                        extend: 'excel',
+                        autoFilter: true,
+                        exportOptions: {
+                            columns: ':visible'
+                        }
+                    },
+                    {
+                        extend: 'pdfHtml5',
+                        exportOptions: {
+                            columns: ':visible'
+                        }
+                    },
+                    {
+                        extend: 'print'
+                    }
+                ], select: true,
+                lengthMenu: [
+                    [10, 25, 50, -1],
+                    ['10 rows', '25 rows', '50 rows', 'Show all']
+                ],
+            });
+        });
+    </script>
+
+    <!-- tooltip -->
+    <script>
+        var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
+        var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+            return new bootstrap.Tooltip(tooltipTriggerEl)
+        })
+    </script>
 </div>
 
 </html>
+<!-- footer end -->
