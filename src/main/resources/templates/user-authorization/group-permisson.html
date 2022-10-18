@@ -19,40 +19,56 @@
             <main>
                 <form method="post">
                     <!-- Page header-->
-                    <header style="background-color: #ec4f4f">
+                    <header>
                         <div class="align-items-center container-xl d-flex flex-row justify-content-between px-5">
-                            <h1 class="text-white py-3 mb-0 display-6">Group Permisson</h1>
+                            <h1 class="text-dark py-3 mb-0 display-6">Group Permission</h1>
                         </div>
                     </header>
-                    <div class="container-xl p-5">
+                    <div class="container-xl p-4">
+                        <div class="d-flex justify-content-end mb-3">
+                            <a class="btn table-pri-btn shadow-sm"><i class='bx bx-user-check me-2 bx-sm' ></i>Permission</a>
+                        </div>
                         <div class="card card-raised table-card-shadow">
                             <div class="card-body text-center p-5">
                                 <table class="display nowrap table table-striped" style="width:100%" id="tableOne">
                                     <thead>
                                         <tr>
-                                            <th>Select</th>
                                             <th>ID</th>
                                             <th>Name</th>
+                                            <th>Position</th>
                                             <th>Email Address</th>
+                                            <th>Can Edit</th>
                                             <th>Permission</th>
-                                            <th>Submit</th>
+                                            <th>Action</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <tr style="vertical-align: middle;">
-                                            <td><input type="checkbox" class="form-check-input" id="exampleCheck1"/></td>
                                             <td>USR001</td>
                                             <td>Mg MG</td>
+                                            <th>Salesperson</th>
                                             <td>email@gmail.com</td>
-                                            <td>
-                                                <select class="form-select">
-                                                    <option selected value="1">Default Permission</option>
-                                                    <option value="2">Full Permission</option>
-                                                </select>
-                                            </td>
-                                            <td>
-                                                <a class="btn table-pri-btn">Submit</a>
-                                            </td>
+                                            <td><input type="checkbox" class="form-check-input ms-2" id="exampleCheck1"/></td>
+                                            <td>Default</td>
+                                            <td><a class="btn delete-icon-btn"><i class="material-icons">delete</i></a></td>
+                                        </tr>
+                                        <tr style="vertical-align: middle;">
+                                            <td>USR002</td>
+                                            <td>Kyaw Kyaw</td>
+                                            <th>Editor</th>
+                                            <td>email@gmail.com</td>
+                                            <td><input type="checkbox" class="form-check-input ms-2" checked id="exampleCheck1"/></td>
+                                            <td>Can Edit</td>
+                                            <td><a class="btn delete-icon-btn"><i class="material-icons">delete</i></a></td>
+                                        </tr>
+                                        <tr style="vertical-align: middle;">
+                                            <td>USR003</td>
+                                            <td>Aye Aye</td>
+                                            <th>Salesperson</th>
+                                            <td>email@gmail.com</td>
+                                            <td><input type="checkbox" class="form-check-input ms-2" id="exampleCheck1"/></td>
+                                            <td>Default</td>
+                                            <td><a class="btn delete-icon-btn"><i class="material-icons">delete</i></a></td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -67,7 +83,7 @@
         </div>
     </div>
 
-    <div th:insert="admin-fragments :: admin_footer" />
+    <div th:insert="admin-fragaments :: admin_footer" />
 
 </body>
 

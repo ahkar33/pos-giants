@@ -26,11 +26,11 @@
 </head>
 
 <!-- Nav Bar Start-->
-<nav th:fragment="admin_navbar" class="top-app-bar navbar navbar-expand navbar-dark bg-dark">
+<nav th:fragment="admin_navbar" class="top-app-bar navbar navbar-expand navbar-dark bg-white">
     <div class="container-fluid px-4">
         <!-- Drawer toggle button-->
         <button class="btn btn-lg btn-icon order-1 order-lg-0" id="drawerToggle" href="javascript:void(0);"><i
-                class="material-icons">menu</i></button>
+                class="material-icons text-dark">menu</i></button>
         <!-- Navbar brand-->
         <a class="navbar-brand me-auto" href="">
             <img class="nav-img" src="/assets/img/logo-full.png" width="200px" />
@@ -43,7 +43,7 @@
                 <div class="dropdown dropdown-notifications d-none d-sm-block">
                     <button class="btn btn-lg btn-icon dropdown-toggle me-3" id="dropdownMenuMessages" type="button"
                         data-bs-toggle="dropdown" aria-expanded="false"><i
-                            class="material-icons">mail_outline</i></button>
+                            class="material-icons text-dark">mail_outline</i></button>
                     <ul class="dropdown-menu dropdown-menu-end me-3 mt-3 py-0 overflow-hidden"
                         aria-labelledby="dropdownMenuMessages">
                         <li>
@@ -81,7 +81,7 @@
                 <div class="dropdown dropdown-notifications d-none d-sm-block">
                     <button class="btn btn-lg btn-icon dropdown-toggle me-3" id="dropdownMenuNotifications"
                         type="button" data-bs-toggle="dropdown" aria-expanded="false"><i
-                            class="material-icons">notifications</i></button>
+                            class="material-icons text-dark">notifications</i></button>
                     <ul class="dropdown-menu dropdown-menu-end me-3 mt-3 py-0 overflow-hidden"
                         aria-labelledby="dropdownMenuNotifications">
                         <li>
@@ -116,7 +116,7 @@
                 <!-- User profile dropdown-->
                 <div class="dropdown">
                     <button class="btn btn-lg btn-icon dropdown-toggle" id="dropdownMenuProfile" type="button"
-                        data-bs-toggle="dropdown" aria-expanded="false"><i class="material-icons">person</i></button>
+                        data-bs-toggle="dropdown" aria-expanded="false"><i class="material-icons text-dark">person</i></button>
                     <ul class="dropdown-menu dropdown-menu-end mt-3" aria-labelledby="dropdownMenuProfile">
                         <li>
                             <a class="dropdown-item" href="#!">
@@ -282,7 +282,7 @@
                 <div class="collapse" id="collapseUserAuth" aria-labelledby="headingTwo"
                     data-bs-parent="#drawerAccordion">
                     <nav class="drawer-menu-nested nav">
-                        <a class="nav-link">Stock Permission</a>
+                        <a class="nav-link">Product Permission</a>
                     </nav>
                     <nav class="drawer-menu-nested nav">
                         <a class="nav-link">Category Permission</a>
