@@ -2920,14 +2920,14 @@ textarea.form-control-lg {
 }
 
 .form-check-input:focus {
-  border-color: #f58086;
+  border-color: #8585e0;
   outline: 0;
-  box-shadow: 0 0 0 0.25rem rgba(234, 0, 0, 0.25);
+  box-shadow: 0 0 0 0.25rem rgba(51, 51, 204, 0.25);
 }
 
 .form-check-input:checked {
-  background-color: #ea000c;
-  border-color: #ea0000;
+  background-color: #4747D1;
+  border-color: #4747D1;
 }
 
 .form-check-input:checked[type="checkbox"] {
@@ -2939,8 +2939,8 @@ textarea.form-control-lg {
 }
 
 .form-check-input[type="checkbox"]:indeterminate {
-  background-color: #ea0014;
-  border-color: #ea000c;
+  background-color: #4747D1;
+  border-color: #4747D1;
   background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3e%3cpath fill='none' stroke='%23fff' stroke-linecap='round' stroke-linejoin='round' stroke-width='3' d='M6 10h8'/%3e%3c/svg%3e");
 }
 
@@ -29077,11 +29077,12 @@ pre[class*="language-"] {
 }
 
 .page-header-titile {
-  background-color: #ec4f4f;
+  background-color: #F5F5F5;
+  color: #000;
 }
 
 .msg-noti-navbar-bgcolor {
-  background-color: #ee5d5d;
+  background-color: #4747d1;
 }
 
 .table-danger-button {
@@ -29166,7 +29167,7 @@ input[type="color"]:focus,
   border-color: #d9d9d9;
   background-color: #d9d9d9;
   text-align: center;
-  color: #000000;
+  color: #000;
   flex-direction: row-reverse;
   justify-content: center;
   transition: none;
@@ -29176,9 +29177,9 @@ input[type="color"]:focus,
   width: 50%;
   margin: 0px;
   border-radius: 0px;
-  background-color: #ec4f4f;
+  background-color: #4747d1;
   border-style: solid;
-  border-color: #ec4f4f;
+  border-color: #4747d1;
   text-align: center;
   flex-direction: row-reverse;
   justify-content: center;
@@ -29188,9 +29189,9 @@ input[type="color"]:focus,
   width: 50%;
   margin: 0px;
   border-radius: 0px;
-  background-color: #ee5d5d;
+  background-color: #7070db;
   border-style: solid;
-  border-color: #ee5d5d;
+  border-color: #7070db;
   text-align: center;
   flex-direction: row-reverse;
   justify-content: center;
@@ -29200,9 +29201,9 @@ input[type="color"]:focus,
   width: 50%;
   margin: 0px;
   border-radius: 0px;
-  background-color: #e92f2f;
+  background-color: #7070db;
   border-style: solid;
-  border-color: #e92f2f;
+  border-color: #7070db;
   text-align: center;
   flex-direction: row-reverse;
   justify-content: center;
@@ -29404,25 +29405,25 @@ dl {
 /* dasboard card end */
 
 .table-pri-btn {
-  background-color: #1a53ff;
+  background-color: #4747d1;
   color: #fff;
   text-transform: capitalize;
 }
 
 .table-pri-btn:hover {
-  background-color: #3366ff;
+  background-color: #7070db;
   color: #fff;
   text-transform: capitalize;
 }
 
 .table-pri-out-btn{
-  border-color: #1a53ff;
-  color: #1a53ff;
+  border-color: #4747d1;
+  color: #4747d1;
   text-transform: capitalize;
 }
 
 .table-pri-out-btn:hover{
-  background-color: #1a53ff;
+  background-color: #4747d1;
   color: #fff;
   text-transform: capitalize;
 }
@@ -29446,4 +29447,20 @@ dl {
 
 .icon-fsize-table{
   font-size: 17px;
+}
+
+.delete-icon-btn{
+  font-size: 10px;
+  background-color: #cc0000;
+  color: #fff;
+  padding-left: 8px;
+  padding-right: 8px;
+}
+
+.delete-icon-btn:hover{
+  font-size: 10px;
+  background-color: #e60000;
+  color: #fff;
+  padding-left: 8px;
+  padding-right: 8px;
 }
