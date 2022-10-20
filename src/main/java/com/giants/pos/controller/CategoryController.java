@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.giants.pos.datamodel.Category;
 import com.giants.pos.service.CategoryService;
@@ -31,26 +32,28 @@ public class CategoryController {
     private CategoryService categoryService;
 
     @GetMapping("create")
-    public String create(){
+    public String create() {
         return "category/create";
     }
 
     @PostMapping("create")
-    public String store(String name, ModelMap m, @RequestParam(required = false) Integer id){
-        if(name.isBlank()){
+    public String store(String name, ModelMap m, @RequestParam(required = false) Integer id,
+            RedirectAttributes redirAttr) {
+        if (name.isBlank()) {
             m.put("name", "Category name is required!");
             return "category/create";
         }
 
         var c = categoryService.findByName(name);
-        if(c != null && id == null){
+        if (c != null && id == null) {
             m.put("old", name);
             m.put("name", "Category name has already existed!");
-            return "category/create";
+            redirAttr.addFlashAttribute("msg", true);
+            return "redirect:/admin/category/list";
         }
 
-        if(c != null && id != null){
-            if(c.getId() != id){
+        if (c != null && id != null) {
+            if (c.getId() != id) {
                 m.put("name", "Category name has already existed!");
                 m.put("category", categoryService.findById(id));
                 m.put("old", name);
@@ -61,7 +64,7 @@ public class CategoryController {
         var email = SecurityContextHolder.getContext().getAuthentication().getName();
         var user = userService.findByEmail(email);
 
-        if(id == null){
+        if (id == null) {
             var category = new Category();
             category.setName(name);
             category.setCreated_at(LocalDateTime.now());
@@ -70,8 +73,8 @@ public class CategoryController {
             category.setCreated_by(user.getName());
             category.setCode("cat".concat(df.format(count)));
             categoryService.save(category);
-            count = count+1;
-            return "redirect:/admin/category/create";
+            count = count + 1;
+            return "redirect:/admin/category/list";
         }
 
         var category = categoryService.findById(id);
@@ -83,22 +86,22 @@ public class CategoryController {
     }
 
     @GetMapping("list")
-    public String index(ModelMap m){
+    public String index(ModelMap m) {
         m.put("categories", categoryService.findAllByOrderByIdDesc());
         return "category/index";
     }
 
     @GetMapping("delete/{id}")
-    public String destroy(@PathVariable int id){
+    public String destroy(@PathVariable int id) {
         categoryService.deleteById(id);
         return "redirect:/admin/category/list";
     }
 
     @GetMapping("edit/{id}")
-    public String edit(@PathVariable int id, ModelMap m){
+    public String edit(@PathVariable int id, ModelMap m) {
         var category = categoryService.findById(id);
         m.put("category", category);
         return "category/create";
     }
-    
+
 }

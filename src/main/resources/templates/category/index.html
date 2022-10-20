@@ -20,8 +20,7 @@
                 <header>
                     <div class="align-items-center container-xl d-flex flex-row justify-content-between px-5">
                         <h1 class="py-3 mb-0 display-6">Category List</h1>
-                        <a class="btn btn-dark text-capitalize" data-bs-toggle="modal"
-                            data-bs-target="#exampleModal"><i
+                        <a class="btn btn-dark text-capitalize" data-bs-toggle="modal" data-bs-target="#exampleModal"><i
                                 class="material-icons me-2">add_circle_outline</i>Create Category</a>
                     </div>
                 </header>
@@ -54,9 +53,8 @@
                                             <a th:href="@{/admin/category/delete/}+${c.id}"
                                                 class="btn table-danger-out-btn me-2"><i
                                                     class="material-icons fs-5">delete</i></a>
-                                            <a th:href="@{/admin/category/edit/}+${c.id}"
-                                                class="btn table-pri-btn" data-bs-toggle="modal"
-                                                data-bs-target="#exampleModal">Edit</a>
+                                            <a th:href="@{/admin/category/edit/}+${c.id}" class="btn table-pri-btn"
+                                                data-bs-toggle="modal" data-bs-target="#exampleModal">Edit</a>
                                         </td>
                                     </tr>
                                 </tbody>
@@ -79,10 +77,11 @@
                             </div>
                             <div class="modal-body">
                                 <label class="form-label">Category Name</label>
+                                <input type="hidden" id="isTrue" th:value="${msg}">
                                 <input type="text" class="modal-input-style form-control" name="name"
                                     placeholder="Enter Category Name" th:if="category != null"
                                     th:value="${old != null} ? ${old} : ${category?.name}"
-                                    th:classappend="${name == null} ? '' : 'is-invalid'">
+                                    th:classappend="${name == null} ? '' : 'is-invalid'" required>
                                 <input type="text" class="modal-input-style form-control" name="name"
                                     placeholder="Enter Category Name" th:value="${old == null} ? '' : ${old}"
                                     th:classappend="${name == null} ? '' : 'is-invalid'" th:if="category == null">
@@ -102,6 +101,15 @@
                     </div>
                 </div>
             </div>
+               
+            <script>
+                let isTrue = document.getElementById('isTrue').value;
+                if(isTrue) {
+                    console.log(isTrue);
+                }else {
+                    console.log("hello");
+                }
+            </script>
 
             <!-- copyright footer -->
             <div th:insert="admin-fragments :: admin_cr_footer" />
