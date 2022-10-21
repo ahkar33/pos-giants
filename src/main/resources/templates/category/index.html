@@ -101,15 +101,7 @@
                     </div>
                 </div>
             </div>
-               
-            <script>
-                let isTrue = document.getElementById('isTrue').value;
-                if(isTrue) {
-                    console.log(isTrue);
-                }else {
-                    console.log("hello");
-                }
-            </script>
+
 
             <!-- copyright footer -->
             <div th:insert="admin-fragments :: admin_cr_footer" />
@@ -118,6 +110,19 @@
     </div>
 
     <div th:insert="admin-fragments :: admin_footer" />
+    <script>
+        const alertWarning = () => {
+            Swal.fire({
+                icon: 'info',
+                title: 'Category name has already existed!',
+                text: '',
+            })
+        }
+        let isTrue = document.getElementById('isTrue').value;
+        if (isTrue) {
+            alertWarning();
+        }             
+    </script>
 </body>
 
 </html>
