@@ -50,11 +50,48 @@
                                         <td>[[${#temporals.format(c.created_at, 'yyyy-MM-dd hh:mm a')}]]</td>
                                         <td>[[${#temporals.format(c.updated_at, 'yyyy-MM-dd hh:mm a')}]]</td>
                                         <td>
-                                            <a th:href="@{/admin/category/delete/}+${c.id}"
-                                                class="btn table-danger-out-btn me-2"><i
-                                                    class="material-icons fs-5">delete</i></a>
-                                            <a th:href="@{/admin/category/edit/}+${c.id}" class="btn table-pri-btn"
-                                                data-bs-toggle="modal" data-bs-target="#exampleModal">Edit</a>
+                                            <button class="btn table-danger-out-btn me-2" th:attr="onclick=|handleDelete(${c.id})|"
+                                            >
+                                                <i class="material-icons fs-5">delete</i>
+                                            </button>
+                                            <a class="btn table-pri-btn" data-bs-toggle="modal"
+                                                th:attr="data-bs-target='#editModal' + ${c.id}">Edit</a>
+                                            <!-- Modal -->
+                                            <div class="modal fade" th:attr="id='editModal' + ${c.id}" tabindex="-1"
+                                                aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                <div class="modal-dialog modal-dialog-centered">
+                                                    <div class="modal-content">
+                                                        <form th:action="@{/admin/category/create}" method="post">
+                                                            <div class="modal-header">
+                                                                <h1 class="modal-title fs-5" id="exampleModalLabel">
+                                                                    Edit Category
+                                                                </h1>
+                                                                <button type="button" class="btn-close"
+                                                                    data-bs-dismiss="modal" aria-label="Close"></button>
+                                                            </div>
+                                                            <div class="modal-body">
+                                                                <label class="form-label">Category Name</label>
+                                                                <input type="hidden" id="isTrue" th:value="${msg}">
+                                                                <input type="text"
+                                                                    class="modal-input-style form-control" name="name"
+                                                                    placeholder="Enter Category Name"
+                                                                    th:value="${c.name}" pattern="\S(.*\S)?" required>
+                                                                <input type="hidden" name="id" th:value="${c.id}">
+                                                            </div>
+                                                            <div class="modal-footer modal-footer-padding">
+                                                                <button type="button"
+                                                                    class="btn btn-secondary modal-close-btn"
+                                                                    data-bs-dismiss="modal">Close</button>
+                                                                <button type="submit"
+                                                                    class="btn btn-primary modal-submit-btn">
+                                                                    Edit Category
+                                                                </button>
+                                                            </div>
+                                                        </form>
+                                                    </div>
+                                                </div>
+                                            </div>
+
                                         </td>
                                     </tr>
                                 </tbody>
@@ -95,7 +132,8 @@
                                 <button type="submit" class="btn btn-primary modal-submit-btn">[[${category == null} ?
                                     'Create' :
                                     'Edit']]
-                                    Category</button>
+                                    Category
+                                </button>
                             </div>
                         </form>
                     </div>
@@ -118,6 +156,23 @@
                 text: '',
             })
         }
+
+        const handleDelete = (categoryId) => {
+            Swal.fire({
+                title: 'Are you sure want to delete?',
+                text: "You won't be able to revert this!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#d33',
+                cancelButtonColor: '#3085d6',
+                confirmButtonText: 'Yes, delete it!'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    window.location = `http://localhost:8080/admin/category/delete/${categoryId}`;
+                }
+            })
+        };
+
         let isTrue = document.getElementById('isTrue').value;
         if (isTrue) {
             alertWarning();

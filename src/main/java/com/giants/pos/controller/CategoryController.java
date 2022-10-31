@@ -37,27 +37,29 @@ public class CategoryController {
     }
 
     @PostMapping("create")
-    public String store(String name, ModelMap m, @RequestParam(required = false) Integer id,
+    public String store(String name, ModelMap model, @RequestParam(required = false) Integer id,
             RedirectAttributes redirAttr) {
+
         if (name.isBlank()) {
-            m.put("name", "Category name is required!");
-            return "category/create";
+            model.put("name", "Category name is required!");
+            return "redirect:/admin/category/list";
         }
 
         var c = categoryService.findByName(name);
         if (c != null && id == null) {
-            m.put("old", name);
-            m.put("name", "Category name has already existed!");
+            model.put("old", name);
+            model.put("name", "Category name has already existed!");
             redirAttr.addFlashAttribute("msg", true);
             return "redirect:/admin/category/list";
         }
 
         if (c != null && id != null) {
             if (c.getId() != id) {
-                m.put("name", "Category name has already existed!");
-                m.put("category", categoryService.findById(id));
-                m.put("old", name);
-                return "category/create";
+                model.put("name", "Category name has already existed!");
+                model.put("category", categoryService.findById(id));
+                model.put("old", name);
+                redirAttr.addFlashAttribute("msg", true);
+                return "redirect:/admin/category/list";
             }
         }
 
